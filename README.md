@@ -1,6 +1,6 @@
 # Været på Søbekkseter ⛅️
 
-## What is it ❓
+## What is Været på Søbekkseter ❓
 
 This project is the official code base for the website [Været på Søbekkseter](https://www.systemsoft.no/Sobekklia/wx.htm).
 
