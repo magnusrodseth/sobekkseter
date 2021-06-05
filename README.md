@@ -18,3 +18,20 @@ Developed by Magnus Rødseth and Julian Grande, Summer 2021.
 - TypeScript
 - React
 - Tailwind CSS (Not yet decided CSS framework)
+
+## Running the application locally ⏩
+
+After cloning the repository, navigate to the `sobekkseter` directory. From now on, this will be the root directory `~`.
+
+```shell
+# Navigate to the frontend folder
+cd frontend
+
+# Install dependencies
+yarn install
+
+# Run application in development mode
+yarn dev
+```
+
+Open your web browser and go to `localhost:3000`. Now, the application should be running!
