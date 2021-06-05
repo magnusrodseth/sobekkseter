@@ -60,6 +60,8 @@ Open your web browser and go to `localhost:3000`. The application should be runn
 
 ### Without Docker 📦
 
+If you do not have `yarn` installed globally on your computer, you can use this [tutorial](https://classic.yarnpkg.com/en/docs/install/#mac-stable) for doing so. If you prefer using `npm`, exchange `yarn` with `npm` in the commands below.
+
 **`Terminal`**
 
 ```shell
