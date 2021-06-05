@@ -37,6 +37,8 @@ TOKEN_ID=MyT0k3n1D
 
 Now that you have a valid `.env` file, it's time to run the application.
 
+**`Terminal`**
+
 ```shell
 # Navigate to the frontend folder
 cd frontend
