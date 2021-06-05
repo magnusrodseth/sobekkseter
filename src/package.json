@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest"
+    "test": "jest --forceExit --detectOpenHandles",
+    "coverage": "jest --forceExit --detectOpenHandles --coverage",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -26,6 +28,7 @@
     "eslint": "^7.7.0",
     "eslint-plugin-react": "^7.20.6",
     "jest": "^26.4.2",
+    "ts-jest": "^26.5.4",
     "jest-enzyme": "^7.1.2",
     "typescript": "4.3.2"
   }
