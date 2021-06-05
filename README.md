@@ -6,7 +6,7 @@ This project is the official code base for the website [Været på Søbekkseter]
 
 ## An illustration of the data flow
 
-[Data Flow Illustration](static/img/data-flow-illustration.png)
+![Data Flow Illustration](./static/img/data-flow-illustration.png)
 
 ## Developer information
 
