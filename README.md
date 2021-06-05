@@ -11,3 +11,10 @@ This project is the official code base for the website [Været på Søbekkseter]
 ## Developer information 🙋🏼‍♂️
 
 Developed by Magnus Rødseth and Julian Grande, Summer 2021.
+
+## Tech Stack 🛠
+
+- Next.js
+- TypeScript
+- React
+- Tailwind CSS (Not yet decided CSS framework)
