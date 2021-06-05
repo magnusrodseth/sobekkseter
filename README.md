@@ -37,11 +37,34 @@ TOKEN_ID=MyT0k3n1D
 
 Now that you have a valid `.env` file, it's time to run the application.
 
+### With Docker 🐳
+
+First, make sure you have Docker **installed and running** on your computer. Use this [tutorial](https://docs.docker.com/desktop/) if you're having problems.
+
 **`Terminal`**
 
 ```shell
-# Navigate to the frontend folder
-cd frontend
+# Navigate to the sobekkseter directory (inside the root directory)
+cd sobekkseter
+
+# Run the application using Docker
+docker-compose up
+
+# OR
+
+# Run the application in detached state using Docker
+docker-compose up -d
+```
+
+Open your web browser and go to `localhost:3000`. The application should be running!
+
+### Without Docker 📦
+
+**`Terminal`**
+
+```shell
+# Navigate to the sobekkseter directory (inside the root directory)
+cd sobekkseter
 
 # Install dependencies
 yarn install
@@ -50,4 +73,4 @@ yarn install
 yarn dev
 ```
 
-Open your web browser and go to `localhost:3000`. Now, the application should be running!
+Open your web browser and go to `localhost:3000`. The application should be running!
