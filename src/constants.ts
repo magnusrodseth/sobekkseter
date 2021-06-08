@@ -1,2 +1,2 @@
 export const TEN_SECONDS_IN_MILLISECONDS = 10000;
-export const CELSIUS_SYMBOL ="℃";
+export const CELSIUS_SYMBOL = "℃";

@@ -45,10 +45,25 @@ const Index = ({ conditions }: { conditions: IConditions }) => {
       <Navbar />
 
       <main className={styles.main}>
-        {loading ? <h1>Loading...</h1> : <Grid conditions={conditions} />}
+        {loading ? (
+          <h1>
+            <svg
+              className="animate-spin h-5 w-5 mr-3"
+              viewBox="0 0 24 24"
+            ></svg>
+            Loading...
+          </h1>
+        ) : (
+          <Grid conditions={conditions} />
+        )}
       </main>
 
-      <Footer supplier={conditions.image.title} link={conditions.image.link} />
+      <footer className={styles.footer}>
+        <Footer
+          supplier={conditions.image.title}
+          link={conditions.image.link}
+        />
+      </footer>
     </div>
   );
 };
