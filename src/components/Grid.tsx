@@ -8,6 +8,7 @@ import {
 } from "../constants";
 import Conditions from "../types/Conditions";
 import Card from "./Card";
+import CardGroup from "./CardGroup";
 import CardImage from "./CardImage";
 
 /**
@@ -141,6 +142,22 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
           alt="Demo Web Camera Image"
           lastUpdated={conditions.observation_time}
         />
+      </li>
+
+      <li>
+        <CardGroup label="test label" backgroundColor="blue-200">
+          <Card
+            name={"Wind Chill"}
+            value={conditions.windchill_c}
+            unit={CELSIUS}
+          />
+
+          <Card
+            name={"Wind Chill"}
+            value={conditions.windchill_c}
+            unit={CELSIUS}
+          />
+        </CardGroup>
       </li>
     </ul>
   );

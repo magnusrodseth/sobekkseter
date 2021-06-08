@@ -1,7 +1,7 @@
 import React from "react";
 import calculateMphToMs from "../utils/calculateMphToMs";
 
-interface CardProps {
+export interface CardProps {
   name?: string;
   value: string;
   unit?: string;
@@ -27,11 +27,11 @@ const Card: React.FC<CardProps> = ({
   let metersPerSecond = mphToMs ? calculateMphToMs(parsedValue) : null;
 
   return (
-    <div className="w-100 shadow-md hover:shadow-lg bg-white rounded-lg h-auto p-5 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-101">
+    <div className="m-2 w-100 shadow-md hover:shadow-lg bg-white rounded-lg h-auto p-5 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-101">
       <p className="font-bold">
         {/* If name is defined, add name with ':' */}
         {/* Furthermore, only display parsed value if needed. */}
-        {name ? `${name}: ` : null} {mphToMs ? parsedValue : value} {unit}
+        {name ? `${name}: ` : null} {mphToMs ? metersPerSecond : value} {unit}
       </p>
     </div>
   );
