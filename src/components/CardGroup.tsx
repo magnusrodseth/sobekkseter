@@ -5,10 +5,9 @@ interface CardGroupProps {
   label: string;
   className?: string;
   children: any;
-  width?: string;
 }
 
-const CardGroup = ({ label, className, children, width }: CardGroupProps) => {
+const CardGroup = ({ label, className, children }: CardGroupProps) => {
   if (!className) {
     className = "";
   }

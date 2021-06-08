@@ -3,7 +3,6 @@ import {
   CELSIUS,
   DEGREES,
   INCHES,
-  METERS_PER_SECOND_MS,
   MILES_PER_HOUR,
   MILLIBAR_MB,
   PERCENT,
@@ -12,6 +11,7 @@ import Conditions from "../types/Conditions";
 import Card from "./Card";
 import CardGroup from "./CardGroup";
 import CardImage from "./CardImage";
+import CustomPieChart from "./charts/CustomPieChart";
 
 /**
  * image ✅
@@ -86,6 +86,12 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
           <Card name={"Temperature"} value={conditions.temp_c} unit={CELSIUS} />
 
           <Card
+            name={"Wind Chill (Følt temperatur)"}
+            value={conditions.windchill_c}
+            unit={CELSIUS}
+          />
+
+          <Card
             name={"Dewpoint"}
             value={conditions.dewpoint_c}
             unit={CELSIUS}
@@ -105,14 +111,16 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
         <CardGroup label="Wind 🍃" className="bg-gray-200">
           <Card name={"Wind"} value={conditions.wind_degrees} unit={DEGREES} />
 
-          <Card
-            name={"Wind Chill"}
-            value={conditions.windchill_c}
-            unit={CELSIUS}
+          <CustomPieChart
+            width={400}
+            height={300}
+            value={conditions.wind_degrees}
           />
 
-          {/* TODO: Add compass component */}
-          <Card name={"Wind Direction"} value={conditions.wind_dir} />
+          <Card
+            name={"Wind Direction"}
+            value={`${conditions.wind_dir} - ${conditions.wind_degrees}${DEGREES}`}
+          />
 
           <Card
             name={"Wind Strength"}
