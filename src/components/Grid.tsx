@@ -1,36 +1,37 @@
 import React from "react";
-import { CELSIUS_SYMBOL } from "../constants";
+import { CELSIUS, DEGREES, MILLIBAR_MB, PERCENT } from "../constants";
 import Conditions from "../types/Conditions";
 import Card from "./Card";
+import CardImage from "./CardImage";
 
 /**
  * image ✅
  *  title
  *  link
  *
- * dewpoint_c
+ * dewpoint_c ✅
  *
- * heat_index_c
+ * heat_index_c ✅
  *
- * latitude
+ * latitude ✅
  *
- * longitude
+ * longitude ✅
  *
- * observation_time
+ * observation_time ✅
  *
- * pressure_mb (in millibar)
+ * pressure_mb (in millibar) ✅
  *
- * relative_humidity (in percent %)
+ * relative_humidity (in percent %) ✅
  *
- * temp_c
+ * temp_c ✅
  *
- * wind_degrees
+ * wind_degrees ✅
  *
- * wind_dir
+ * wind_dir ✅
  *
- * wind_mph
+ * wind_mph ✅
  *
- * windchill_c
+ * windchill_c ✅
  *
  * davis_current_observation
  *  sunrise
@@ -59,7 +60,81 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
   return (
     <ul className="grid lg:grid-cols-4 gap-5 md:grid-cols-3 sm:grid-cols-2">
       <li>
-        <Card name={"Dewpoint"} value={conditions.dewpoint_c} unit={CELSIUS_SYMBOL} />
+        <Card name={"Dewpoint"} value={conditions.dewpoint_c} unit={CELSIUS} />
+      </li>
+
+      <li>
+        <Card
+          name={"Heat Index"}
+          value={conditions.heat_index_c}
+          unit={CELSIUS}
+        />
+      </li>
+
+      <li>
+        <Card name={"Latitude"} value={conditions.latitude} unit={DEGREES} />
+      </li>
+
+      <li>
+        <Card name={"Longitude"} value={conditions.longitude} unit={DEGREES} />
+      </li>
+
+      <li>
+        <Card name={"Latitude"} value={conditions.latitude} unit={DEGREES} />
+      </li>
+
+      <li>
+        <Card
+          name={"Pressure"}
+          value={conditions.pressure_mb}
+          unit={MILLIBAR_MB}
+        />
+      </li>
+
+      <li>
+        <Card
+          name={"Relative Humidity"}
+          value={conditions.relative_humidity}
+          unit={PERCENT}
+        />
+      </li>
+
+      <li>
+        <Card name={"Temperature"} value={conditions.temp_c} unit={CELSIUS} />
+      </li>
+
+      <li>
+        <Card name={"Wind"} value={conditions.wind_degrees} unit={DEGREES} />
+      </li>
+
+      <li>
+        <Card name={"Wind Direction"} value={conditions.wind_dir} />
+      </li>
+
+      {/* TODO: Must be converted */}
+      <li>
+        <Card
+          name={"Wind Strength"}
+          value={conditions.wind_degrees}
+          unit={DEGREES}
+          mphToMs
+        />
+      </li>
+
+      <li>
+        <Card
+          name={"Wind Chill"}
+          value={conditions.windchill_c}
+          unit={CELSIUS}
+        />
+      </li>
+
+      <li>
+        <CardImage
+          src="/img/sample-web-cam.jpeg"
+          alt="Demo Web Camera Image"
+          lastUpdated={conditions.observation_time}
+        />
       </li>
     </ul>
   );
