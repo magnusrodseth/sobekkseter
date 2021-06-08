@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import dotenv from "dotenv";
 dotenv.config();
 import axios from "axios";
@@ -35,7 +34,7 @@ const Index = ({ conditions }: { conditions: IConditions }) => {
   }, [router]);
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Været på Søbekkseter</title>
         <meta name="description" content="Været på Søbekkseter" />
@@ -58,12 +57,7 @@ const Index = ({ conditions }: { conditions: IConditions }) => {
         )}
       </main>
 
-      <footer className={styles.footer}>
-        <Footer
-          supplier={conditions.image.title}
-          link={conditions.image.link}
-        />
-      </footer>
+      <Footer supplier={conditions.image.title} link={conditions.image.link} />
     </div>
   );
 };

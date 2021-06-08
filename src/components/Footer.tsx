@@ -6,48 +6,48 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ supplier, link }: FooterProps) => {
+  // TODO: Fix formatted footer. Footer should be centered both in lg, md and sm.
   return (
-    <div className="container mx-auto px-6">
-      <div className="mt-auto flex flex-col items-center">
-        <div className="sm:w-2/3 text-center py-3">
-          <a
-            className="text-sm text-blue-700 mb-2 hover:underline transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
-            href="https://github.com/magnusrodseth"
-          >
-            Developed by Magnus Rødseth
-          </a>
+    <footer className="w-screen	h-20 mb-10 flex lg:space-x-10 lg:flex-row md:flex-col sm:flex-col lg:content-end md:content-center justify-center items-end content-end text-center">
+      <a
+        className="text-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 text-blue-400 hover:text-blue-600 hover:underline"
+        href="https://github.com/magnusrodseth"
+      >
+        Developed by Magnus Rødseth
+      </a>
 
-          <a
-            className="text-sm text-blue-700 mb-2 hover:underline transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
-            href={link}
-            target="_blank"
-          >
-            Data supplied by {supplier}
-          </a>
-        </div>
-      </div>
-    </div>
-    // <div className="flex justify-evenly lg:flex-row md:flex-col sm:flex-col xs:flex-col">
-    //   <a
-    //     href="https://github.com/magnusrodseth"
-    //     className="transition duration-500 px-20 ease-in-out transform hover:-translate-y-1 hover:scale-105 text-xs"
-    //   >
-    //     Developed by{" "}
-    //     <span className="text-blue-700 hover:underline px-2">
-    //       Magnus Rødseth
-    //     </span>
-    //   </a>
-
-    //   <a
-    // href={link}
-    // target="_blank"
-    //     className="transition px-20 duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 text-xs"
-    //   >
-    //     Data supplied by{" "}
-    //     <span className="text-blue-700 hover:underline px-2">{supplier}</span>
-    //   </a>
-    // </div>
+      <a
+        className="text-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 text-blue-400 hover:text-blue-600 hover:underline"
+        href={link}
+        target="_blank"
+      >
+        Data supplied by {supplier}
+      </a>
+    </footer>
   );
 };
 
 export default Footer;
+
+{
+  /* <div className="py-16 flex flex-col justify-center items-center">
+      <div className="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+        <a
+          className="m-6 text-sm lg:text-sm leading-none text-gray-900 dark:text-gray-50"
+          href="https://github.com/magnusrodseth"
+        >
+          Developed by Magnus Rødseth
+        </a>
+      </div>
+
+      <div className="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+        <a
+          className="m-6 text-sm lg:text-sm leading-none text-gray-900 dark:text-gray-50"
+          href={link}
+          target="_blank"
+        >
+          Data supplied by {supplier}
+        </a>
+      </div>
+    </div> */
+}
