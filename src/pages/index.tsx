@@ -5,22 +5,34 @@ dotenv.config();
 import axios from "axios";
 import IConditions from "../types/Conditions";
 import { TEN_SECONDS_IN_MILLISECONDS } from "../constants";
-import useSWR from "swr";
 import { GetStaticProps } from "next";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Navbar from "../components/Navbar";
+import Grid from "../components/Grid";
+import Footer from "../components/Footer";
 
-type Props = {
-  conditions: IConditions | null;
-  error: Error | null;
-};
+const Index = ({ conditions }: { conditions: IConditions }) => {
+  // TODO: Remove this
+  console.log(conditions);
 
-const Index = ({ conditions, error }: Props) => {
-  if (error !== null) {
-    return <h1>Error...</h1>;
-  }
+  // Handle loading
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
-  if (!conditions) {
-    return <h1>Loading...</h1>;
-  }
+  useEffect(() => {
+    const handleStart = () => {
+      setLoading(true);
+    };
+
+    const handleComplete = () => {
+      setLoading(false);
+    };
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleComplete);
+    router.events.on("routeChangeError", handleComplete);
+  }, [router]);
 
   return (
     <div className={styles.container}>
@@ -30,9 +42,13 @@ const Index = ({ conditions, error }: Props) => {
         <link rel="icon" href="/img/logo.png" />
       </Head>
 
-      <main className={styles.main}></main>
+      <Navbar />
 
-      <footer className={styles.footer}></footer>
+      <main className={styles.main}>
+        {loading ? <h1>Loading...</h1> : <Grid conditions={conditions} />}
+      </main>
+
+      <Footer supplier={conditions.image.title} link={conditions.image.link} />
     </div>
   );
 };
@@ -45,14 +61,10 @@ export const getStaticProps: GetStaticProps = async () => {
     .then((res) => res.data)
     .catch((error) => {
       console.log(`❌ An error occurred: ${error.message}`);
-
-      return {
-        props: { conditions: null, error },
-      };
     });
 
   return {
-    props: { conditions, error: null },
+    props: { conditions },
   };
 };
 
