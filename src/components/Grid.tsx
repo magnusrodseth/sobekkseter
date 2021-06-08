@@ -1,5 +1,11 @@
 import React from "react";
-import { CELSIUS, DEGREES, MILLIBAR_MB, PERCENT } from "../constants";
+import {
+  CELSIUS,
+  DEGREES,
+  METERS_PER_SECOND_MS,
+  MILLIBAR_MB,
+  PERCENT,
+} from "../constants";
 import Conditions from "../types/Conditions";
 import Card from "./Card";
 import CardImage from "./CardImage";
@@ -111,12 +117,12 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
         <Card name={"Wind Direction"} value={conditions.wind_dir} />
       </li>
 
-      {/* TODO: Must be converted */}
+      {/* TODO: Must be converted from mph -> m/s */}
       <li>
         <Card
           name={"Wind Strength"}
-          value={conditions.wind_degrees}
-          unit={DEGREES}
+          value={conditions.wind_mph}
+          unit={METERS_PER_SECOND_MS}
           mphToMs
         />
       </li>
