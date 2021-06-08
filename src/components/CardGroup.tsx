@@ -3,20 +3,21 @@ import Card, { CardProps } from "./Card";
 
 interface CardGroupProps {
   label: string;
-  backgroundColor?: string;
+  className?: string;
   children: any;
+  width?: string;
 }
 
-const CardGroup = ({ label, backgroundColor, children }: CardGroupProps) => {
-  const color = backgroundColor ? `bg-${backgroundColor}` : null;
+const CardGroup = ({ label, className, children, width }: CardGroupProps) => {
+  if (!className) {
+    className = "";
+  }
 
   return (
     <div
       className={
-        color
-          ? color +
-            " w-100 shadow-md hover:shadow-lg bg-white rounded-lg h-auto p-5 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-101"
-          : "w-100 shadow-md hover:shadow-lg bg-white rounded-lg h-auto p-5 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-101"
+        className +
+        " w-100 shadow-md hover:shadow-lg bg-white rounded-lg h-auto p-5 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-101"
       }
     >
       <p className="font-bold">{label}</p>

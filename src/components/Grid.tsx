@@ -67,9 +67,22 @@ interface GridProps {
 
 const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
   return (
-    <ul className="grid lg:grid-cols-4 gap-5 md:grid-cols-3 sm:grid-cols-2">
+    <ul className="grid gap-3 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 auto-rows-min m-5">
+      <li
+        className="lg:col-start-2 lg:col-span-2 md:col-start-1 md:col-span-2 sm:col-start-1 sm:col-span-1
+                      lg:row-start-1 lg:row-span-2 md:row-start-1 sm:row-start-1"
+      >
+        <CardGroup label="Current weather 📷" className="bg-indigo-200">
+          <CardImage
+            src="/img/sample-web-cam.jpeg"
+            alt="Demo Web Camera Image"
+            updated={conditions.observation_time}
+          />
+        </CardGroup>
+      </li>
+
       <li>
-        <CardGroup label="Temperature 🌡" backgroundColor="yellow-200">
+        <CardGroup label="Temperature 🌡" className="bg-yellow-200">
           <Card name={"Temperature"} value={conditions.temp_c} unit={CELSIUS} />
 
           <Card
@@ -89,7 +102,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
       </li>
 
       <li>
-        <CardGroup label="Wind 🍃" backgroundColor="gray-200">
+        <CardGroup label="Wind 🍃" className="bg-gray-200">
           <Card name={"Wind"} value={conditions.wind_degrees} unit={DEGREES} />
 
           <Card
@@ -112,7 +125,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
 
       {/* Rainfall / Nedbør */}
       <li>
-        <CardGroup label="Rainfall 🌧" backgroundColor="blue-200">
+        <CardGroup label="Rainfall 🌧" className="bg-blue-200">
           <Card
             name={"Pressure"}
             value={conditions.pressure_mb}
@@ -135,17 +148,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
       </li>
 
       <li>
-        <CardGroup label="Current weather 📷" backgroundColor="indigo-200">
-          <CardImage
-            src="/img/sample-web-cam.jpeg"
-            alt="Demo Web Camera Image"
-            lastUpdated={conditions.observation_time}
-          />
-        </CardGroup>
-      </li>
-
-      <li>
-        <CardGroup label="Other data " backgroundColor="red-200">
+        <CardGroup label="Other data" className="bg-red-200">
           <Card
             name={"Sunrise"}
             value={conditions.davis_current_observation.sunrise}

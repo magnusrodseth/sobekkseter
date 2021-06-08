@@ -44,7 +44,7 @@ const Index = ({ conditions }: { conditions: IConditions }) => {
 
       <Navbar />
 
-      <main className={styles.main}>
+      <main>
         {loading ? (
           <h1>
             <svg
