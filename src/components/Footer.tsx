@@ -6,7 +6,6 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ supplier, link }: FooterProps) => {
-  // TODO: Fix formatted footer. Footer should be centered both in lg, md and sm.
   return (
     <footer
       className="grid gap-3 lg:grid-col-2 md:grid-cols-1 sm:grid-cols-1
