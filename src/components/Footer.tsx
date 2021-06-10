@@ -8,7 +8,11 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ supplier, link }: FooterProps) => {
   // TODO: Fix formatted footer. Footer should be centered both in lg, md and sm.
   return (
-    <footer className="font-mono text-sm w-screen	h-20 mb-10 flex lg:space-x-10 lg:flex-row md:flex-col sm:flex-col lg:content-end md:content-center justify-center items-end content-end text-center">
+    <footer
+      className="grid gap-3 lg:grid-col-2 md:grid-cols-1 sm:grid-cols-1
+    lg:grid-rows-1 md:grid-rows-2 sm:grid-rows-2
+    font-mono text-sm w-screen	h-20 mb-10"
+    >
       <a
         className="text-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 text-blue-400 hover:text-blue-600 hover:underline"
         href="https://github.com/magnusrodseth"
