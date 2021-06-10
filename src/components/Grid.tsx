@@ -1,17 +1,12 @@
 import React from "react";
-import {
-  CELSIUS,
-  DEGREES,
-  INCHES,
-  MILES_PER_HOUR,
-  MILLIBAR_MB,
-  PERCENT,
-} from "../constants";
+import { CELSIUS, INCHES, MILLIBAR, PERCENT } from "../constants";
 import Conditions from "../types/Conditions";
-import Card from "./Card";
 import CardGroup from "./CardGroup";
 import CardImage from "./CardImage";
-import CustomPieChart from "./charts/CustomPieChart";
+import RainWidget from "./widgets/RainWidget";
+import SunWidget from "./widgets/SunWidget";
+import TemperatureWidget from "./widgets/TemperatureWidget";
+import WindWidget from "./widgets/WindWidget";
 
 /**
  * image ✅
@@ -72,7 +67,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
         className="lg:col-start-2 lg:col-span-2 md:col-start-1 md:col-span-2 sm:col-start-1 sm:col-span-1
                       lg:row-start-1 lg:row-span-2 md:row-start-1 sm:row-start-1"
       >
-        <CardGroup label="Current weather 📷" className="bg-indigo-200">
+        <CardGroup label="Været nå 📷" className="bg-indigo-200">
           <CardImage
             src="/img/sample-web-cam.jpeg"
             alt="Demo Web Camera Image"
@@ -82,23 +77,28 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
       </li>
 
       <li>
-        <CardGroup label="Temperature 🌡" className="bg-yellow-200">
-          <Card name={"Temperature"} value={conditions.temp_c} unit={CELSIUS} />
+        <CardGroup label="Temperatur 🌡" className="bg-yellow-200">
+          <TemperatureWidget
+            label="Temperatur"
+            value={conditions.temp_c}
+            unit={CELSIUS}
+          />
 
-          <Card
-            name={"Wind Chill (Følt temperatur)"}
+          <TemperatureWidget
+            label={"Følt temperatur"}
             value={conditions.windchill_c}
             unit={CELSIUS}
           />
 
-          <Card
-            name={"Dewpoint"}
+          <TemperatureWidget
+            label={"Duggpunkt"}
             value={conditions.dewpoint_c}
             unit={CELSIUS}
           />
 
-          <Card
-            name={"Heat Index"}
+          {/* Note: I don't think this is actually useful. */}
+          <TemperatureWidget
+            label={"Varmeindeks"}
             value={conditions.heat_index_c}
             unit={CELSIUS}
           />
@@ -108,63 +108,50 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
       </li>
 
       <li>
-        <CardGroup label="Wind 🍃" className="bg-gray-200">
-          <Card name={"Wind"} value={conditions.wind_degrees} unit={DEGREES} />
-
-          <CustomPieChart
-            width={400}
-            height={300}
-            value={conditions.wind_degrees}
-          />
-
-          <Card
-            name={"Wind Direction"}
-            value={`${conditions.wind_dir} - ${conditions.wind_degrees}${DEGREES}`}
-          />
-
-          <Card
-            name={"Wind Strength"}
-            value={conditions.wind_mph}
-            unit={MILES_PER_HOUR}
-            toBeConverted
+        <CardGroup label="Vind 💨" className="bg-gray-200">
+          <WindWidget
+            label="Vind"
+            degrees={conditions.wind_degrees}
+            direction={conditions.wind_dir}
+            milesPerHour={conditions.wind_mph}
           />
         </CardGroup>
       </li>
 
-      {/* Rainfall / Nedbør */}
       <li>
-        <CardGroup label="Rainfall 🌧" className="bg-blue-200">
-          <Card
-            name={"Pressure"}
+        <CardGroup label="Nedbør 🌧" className="bg-blue-200">
+          <RainWidget
+            label={"Trykk"}
             value={conditions.pressure_mb}
-            unit={MILLIBAR_MB}
+            unit={MILLIBAR}
           />
 
-          <Card
-            name={"Relative Humidity"}
+          <RainWidget
+            label={"Luftfuktighet"}
             value={conditions.relative_humidity}
             unit={PERCENT}
           />
 
-          <Card
-            name={"Daily rain"}
+          <RainWidget
+            label={"Regn i dag"}
             value={conditions.davis_current_observation.rain_day_in}
             unit={INCHES}
-            toBeConverted
           />
         </CardGroup>
       </li>
 
       <li>
-        <CardGroup label="Other data" className="bg-red-200">
-          <Card
-            name={"Sunrise"}
-            value={conditions.davis_current_observation.sunrise}
+        <CardGroup label="Sol 🌞" className="bg-red-200">
+          {/* The SunWidget defaults the boolean sunrise flag to be false. */}
+          <SunWidget
+            label={"Soloppgang"}
+            time={conditions.davis_current_observation.sunrise}
+            sunrise
           />
 
-          <Card
-            name={"Sunset"}
-            value={conditions.davis_current_observation.sunset}
+          <SunWidget
+            label={"Solnedgang"}
+            time={conditions.davis_current_observation.sunset}
           />
         </CardGroup>
       </li>
@@ -173,13 +160,3 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
 };
 
 export default Grid;
-
-{
-  /* <li>
-  <Card name={"Latitude"} value={conditions.latitude} unit={DEGREES} />
-</li>
-
-<li>
-  <Card name={"Longitude"} value={conditions.longitude} unit={DEGREES} />
-</li> */
-}

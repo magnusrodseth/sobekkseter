@@ -8,7 +8,7 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ supplier, link }: FooterProps) => {
   // TODO: Fix formatted footer. Footer should be centered both in lg, md and sm.
   return (
-    <footer className="w-screen	h-20 mb-10 flex lg:space-x-10 lg:flex-row md:flex-col sm:flex-col lg:content-end md:content-center justify-center items-end content-end text-center">
+    <footer className="font-mono text-sm w-screen	h-20 mb-10 flex lg:space-x-10 lg:flex-row md:flex-col sm:flex-col lg:content-end md:content-center justify-center items-end content-end text-center">
       <a
         className="text-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 text-blue-400 hover:text-blue-600 hover:underline"
         href="https://github.com/magnusrodseth"
@@ -28,26 +28,3 @@ const Footer: React.FC<FooterProps> = ({ supplier, link }: FooterProps) => {
 };
 
 export default Footer;
-
-{
-  /* <div className="py-16 flex flex-col justify-center items-center">
-      <div className="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-        <a
-          className="m-6 text-sm lg:text-sm leading-none text-gray-900 dark:text-gray-50"
-          href="https://github.com/magnusrodseth"
-        >
-          Developed by Magnus Rødseth
-        </a>
-      </div>
-
-      <div className="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-        <a
-          className="m-6 text-sm lg:text-sm leading-none text-gray-900 dark:text-gray-50"
-          href={link}
-          target="_blank"
-        >
-          Data supplied by {supplier}
-        </a>
-      </div>
-    </div> */
-}
