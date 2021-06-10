@@ -2,7 +2,7 @@ import Head from "next/head";
 import dotenv from "dotenv";
 dotenv.config();
 import axios from "axios";
-import IConditions from "../types/Conditions";
+import IConditions from "../types/IConditions";
 import { TEN_SECONDS_IN_MILLISECONDS } from "../constants";
 import { GetStaticProps } from "next";
 import React, { useState, useEffect } from "react";

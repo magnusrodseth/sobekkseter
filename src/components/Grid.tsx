@@ -1,8 +1,8 @@
 import React from "react";
 import { CELSIUS, INCHES, MILLIBAR, PERCENT } from "../constants";
 import IConditions from "../types/IConditions";
-import CardGroup from "./CardGroup";
-import CardImage from "./CardImage";
+import WidgetGroup from "./WidgetGroup";
+import Image from "./widgets/Image";
 import MonthlyStats from "./stats/MonthlyStats";
 import YearlyStats from "./stats/YearlyStats";
 import RainWidget from "./widgets/RainWidget";
@@ -23,17 +23,17 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
         className="lg:col-start-2 lg:col-span-2 md:col-start-1 md:col-span-2 sm:col-start-1 sm:col-span-1
                       lg:row-start-1 md:row-start-1 sm:row-start-1"
       >
-        <CardGroup label="Været nå 📷" className="bg-indigo-200">
-          <CardImage
+        <WidgetGroup label="Været nå 📷" className="bg-indigo-200">
+          <Image
             src="/img/sample-web-cam.jpeg"
             alt="Demo Web Camera Image"
             updated={conditions.observation_time}
           />
-        </CardGroup>
+        </WidgetGroup>
       </li>
 
       <li>
-        <CardGroup label="Temperatur 🌡" className="bg-yellow-200">
+        <WidgetGroup label="Temperatur 🌡" className="bg-yellow-200">
           <TemperatureWidget
             label="Temperatur"
             value={conditions.temp_c}
@@ -60,22 +60,22 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
           />
 
           {/* TODO: temp monthly, yearly, etc... */}
-        </CardGroup>
+        </WidgetGroup>
       </li>
 
       <li className="lg:row-start-2 lg:col-start-2 lg:col-span-2">
-        <CardGroup label="Vind 💨" className="bg-gray-200">
+        <WidgetGroup label="Vind 💨" className="bg-gray-200">
           <WindWidget
             label="Vind"
             degrees={conditions.wind_degrees}
             direction={conditions.wind_dir}
             milesPerHour={conditions.wind_mph}
           />
-        </CardGroup>
+        </WidgetGroup>
       </li>
 
       <li>
-        <CardGroup label="Nedbør 🌧" className="bg-blue-200">
+        <WidgetGroup label="Nedbør 🌧" className="bg-blue-200">
           <RainWidget
             label={"Trykk"}
             value={conditions.pressure_mb}
@@ -93,11 +93,11 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             value={conditions.davis_current_observation.rain_day_in}
             unit={INCHES}
           />
-        </CardGroup>
+        </WidgetGroup>
       </li>
 
       <li>
-        <CardGroup label="Sol 🌞" className="bg-red-200">
+        <WidgetGroup label="Sol 🌞" className="bg-red-200">
           {/* The SunWidget defaults the boolean sunrise flag to be false. */}
           <SunWidget
             label={"Soloppgang"}
@@ -109,20 +109,20 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             label={"Solnedgang"}
             time={conditions.davis_current_observation.sunset}
           />
-        </CardGroup>
+        </WidgetGroup>
       </li>
 
       <li
         className="lg:col-start-1 lg:col-span-4 md:col-start-1 md:col-span-2 sm:col-start-1 sm:col-span-1
                       lg:row-start-3 md:row-start-4 sm:row-start-1"
       >
-        <CardGroup label="Gjennomsnitt 📊" className="bg-green-200">
+        <WidgetGroup label="Gjennomsnitt 📊" className="bg-green-200">
           <div className="grid gap-3 lg:grid-cols-2">
             <MonthlyStats conditions={conditions} />
 
             <YearlyStats conditions={conditions} />
           </div>
-        </CardGroup>
+        </WidgetGroup>
       </li>
     </ul>
   );

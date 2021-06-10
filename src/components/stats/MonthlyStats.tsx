@@ -2,7 +2,7 @@ import React from "react";
 import { CELSIUS, INCHES, PERCENT } from "../../constants";
 import IConditions from "../../types/IConditions";
 import calculateFahrenheitToCelsius from "../../utils/calculateFahrenheitToCelsius";
-import CardGroup from "../CardGroup";
+import WidgetGroup from "../WidgetGroup";
 import RainWidget from "../widgets/RainWidget";
 import SimpleWindWidget from "../widgets/SimpleWindWidget";
 import TemperatureWidget from "../widgets/TemperatureWidget";
@@ -15,7 +15,7 @@ const MonthlyStats: React.FC<MonthlyStatsProps> = ({
   conditions,
 }: MonthlyStatsProps) => {
   return (
-    <CardGroup label="Månedlig" className="bg-gray-200">
+    <WidgetGroup label="Månedlig" className="bg-gray-200">
       <TemperatureWidget
         label="Temperatur (min)"
         value={calculateFahrenheitToCelsius(
@@ -35,7 +35,9 @@ const MonthlyStats: React.FC<MonthlyStatsProps> = ({
       <TemperatureWidget
         label="Varmeindeks (max)"
         value={calculateFahrenheitToCelsius(
-          parseFloat(conditions.davis_current_observation.heat_index_month_high_f)
+          parseFloat(
+            conditions.davis_current_observation.heat_index_month_high_f
+          )
         ).toFixed(1)}
         unit={CELSIUS}
       />
@@ -72,7 +74,7 @@ const MonthlyStats: React.FC<MonthlyStatsProps> = ({
         label="Vindstyrke (max)"
         milesPerHour={conditions.davis_current_observation.wind_month_high_mph}
       />
-    </CardGroup>
+    </WidgetGroup>
   );
 };
 

@@ -1,13 +1,13 @@
 import React from "react";
 import Wrapper from "./Wrapper";
 
-interface CardGroupProps {
+interface WidgetGroupProps {
   label: string;
   className?: string;
   children: any;
 }
 
-const CardGroup = ({ label, className, children }: CardGroupProps) => {
+const WidgetGroup = ({ label, className, children }: WidgetGroupProps) => {
   if (!className) {
     className = "";
   }
@@ -20,4 +20,4 @@ const CardGroup = ({ label, className, children }: CardGroupProps) => {
   );
 };
 
-export default CardGroup;
+export default WidgetGroup;

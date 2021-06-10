@@ -2,7 +2,7 @@ import React from "react";
 import { CELSIUS, INCHES, PERCENT } from "../../constants";
 import IConditions from "../../types/IConditions";
 import calculateFahrenheitToCelsius from "../../utils/calculateFahrenheitToCelsius";
-import CardGroup from "../CardGroup";
+import WidgetGroup from "../WidgetGroup";
 import RainWidget from "../widgets/RainWidget";
 import SimpleWindWidget from "../widgets/SimpleWindWidget";
 import TemperatureWidget from "../widgets/TemperatureWidget";
@@ -15,7 +15,7 @@ const YearlyStats: React.FC<YearlyStatsProps> = ({
   conditions,
 }: YearlyStatsProps) => {
   return (
-    <CardGroup label="Årlig" className="bg-gray-200">
+    <WidgetGroup label="Årlig" className="bg-gray-200">
       <TemperatureWidget
         label="Temperatur (min)"
         value={Math.round(
@@ -92,7 +92,7 @@ const YearlyStats: React.FC<YearlyStatsProps> = ({
         label="Vindstyrke (max)"
         milesPerHour={conditions.davis_current_observation.wind_year_high_mph}
       />
-    </CardGroup>
+    </WidgetGroup>
   );
 };
 

@@ -1,12 +1,12 @@
 import React from "react";
 
-interface CardImageProps {
+interface ImageProps {
   src: string;
   alt: string;
   updated: string;
 }
 
-const CardImage: React.FC<CardImageProps> = (props) => {
+const Image: React.FC<ImageProps> = (props) => {
   const { src, alt, updated } = props;
 
   return (
@@ -17,4 +17,4 @@ const CardImage: React.FC<CardImageProps> = (props) => {
   );
 };
 
-export default CardImage;
+export default Image;
