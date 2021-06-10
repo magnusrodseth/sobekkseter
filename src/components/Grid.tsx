@@ -1,63 +1,16 @@
 import React from "react";
 import { CELSIUS, INCHES, MILLIBAR, PERCENT } from "../constants";
-import Conditions from "../types/Conditions";
+import IConditions from "../types/IConditions";
+import calculateFahrenheitToCelsius from "../utils/calculateFahrenheitToCelsius";
 import CardGroup from "./CardGroup";
 import CardImage from "./CardImage";
 import RainWidget from "./widgets/RainWidget";
+import SimpleWindWidget from "./widgets/SimpleWindWidget";
 import SunWidget from "./widgets/SunWidget";
 import TemperatureWidget from "./widgets/TemperatureWidget";
 import WindWidget from "./widgets/WindWidget";
-
-/**
- * image ✅
- *  title
- *  link
- *
- * dewpoint_c ✅
- *
- * heat_index_c ✅
- *
- * latitude ✅
- *
- * longitude ✅
- *
- * observation_time ✅
- *
- * pressure_mb (in millibar) ✅
- *
- * relative_humidity (in percent %) ✅
- *
- * temp_c ✅
- *
- * wind_degrees ✅
- *
- * wind_dir ✅
- *
- * wind_mph ✅
- *
- * windchill_c ✅
- *
- * davis_current_observation
- *  sunrise ✅
- *  sunset ✅
- *  wind_day_high_mph
- *  wind_day_high_time
- *  rain_day_in
- *  rain_month_in
- *  rain_year_in
- *  temp_day_high_f
- *  temp_day_high_time
- *  temp_day_low_f
- *  temp_day_low_time:
- *  temp_month_high_f
- *  temp_month_low_f
- *  temp_year_high_f
- *  temp_year_low_f
- *
- */
-
 interface GridProps {
-  conditions: Conditions;
+  conditions: IConditions;
 }
 
 const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
@@ -153,6 +106,84 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             label={"Solnedgang"}
             time={conditions.davis_current_observation.sunset}
           />
+        </CardGroup>
+      </li>
+
+      <li>
+        <CardGroup label="Gjennomsnitt 📊" className="bg-green-200">
+          <CardGroup label="Månedlig" className="bg-gray-200">
+            <TemperatureWidget
+              label="Temperatur (min)"
+              value={calculateFahrenheitToCelsius(
+                parseFloat(
+                  conditions.davis_current_observation.temp_month_low_f
+                )
+              ).toFixed(1)}
+              unit={CELSIUS}
+            />
+
+            <TemperatureWidget
+              label="Temperatur (max)"
+              value={calculateFahrenheitToCelsius(
+                parseFloat(
+                  conditions.davis_current_observation.temp_month_high_f
+                )
+              ).toFixed(1)}
+              unit={CELSIUS}
+            />
+
+            <RainWidget
+              label="Nedbør"
+              value={conditions.davis_current_observation.rain_month_in}
+              unit={INCHES}
+            />
+
+            <SimpleWindWidget
+              label="Vindstyrke (max)"
+              milesPerHour={
+                conditions.davis_current_observation.wind_month_high_mph
+              }
+            />
+          </CardGroup>
+
+          <CardGroup label="Årlig" className="bg-gray-200">
+            <RainWidget
+              label="Nedbør"
+              value={conditions.davis_current_observation.rain_year_in}
+              unit={INCHES}
+            />
+
+            <TemperatureWidget
+              label="Temperatur (min)"
+              value={Math.round(
+                (calculateFahrenheitToCelsius(
+                  parseFloat(
+                    conditions.davis_current_observation.temp_year_low_f
+                  )
+                ) *
+                  100) /
+                  100
+              ).toFixed(1)}
+              unit={CELSIUS}
+            />
+
+            <TemperatureWidget
+              label="Temperatur (max)"
+              value={calculateFahrenheitToCelsius(
+                parseFloat(
+                  conditions.davis_current_observation.temp_year_high_f
+                )
+              ).toFixed(1)}
+              unit={CELSIUS}
+            />
+
+            <SimpleWindWidget
+              label="Vindstyrke (max)"
+              milesPerHour={
+                conditions.davis_current_observation.wind_year_high_mph
+              }
+            />
+          </CardGroup>
         </CardGroup>
       </li>
     </ul>

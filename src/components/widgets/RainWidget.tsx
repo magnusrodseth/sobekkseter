@@ -41,7 +41,7 @@ const RainWidget: React.FC<RainWidgetProps> = ({
             : "text-center text-2xl"
         }
       >
-        {isRainfall ? rainInMillimeters : parsedValue}
+        {isRainfall ? rainInMillimeters.toFixed(1) : parsedValue.toFixed(1)}{" "}
         {isRainfall ? MILLIMETERS : unit}
       </div>
     </Wrapper>
