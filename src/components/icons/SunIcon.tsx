@@ -1,8 +1,8 @@
 import React from "react";
 
-interface SunProps {}
+interface SunIconProps {}
 
-const Sun: React.FC<SunProps> = ({}) => {
+const SunIcon: React.FC<SunIconProps> = ({}) => {
   return (
     <div className="mt-1">
       <svg
@@ -21,4 +21,4 @@ const Sun: React.FC<SunProps> = ({}) => {
   );
 };
 
-export default Sun;
+export default SunIcon;

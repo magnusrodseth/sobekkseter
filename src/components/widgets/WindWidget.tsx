@@ -2,7 +2,7 @@ import React from "react";
 import { DEGREES, METERS_PER_SECOND } from "../../constants";
 import calculateMphToMs from "../../utils/calculateMphToMs";
 import windSpeedToDescription from "../../utils/windSpeedToDescription";
-import Arrow from "../icons/Arrow";
+import ArrowIcon from "../icons/ArrowIcon";
 import Wrapper from "../Wrapper";
 
 interface WindWidgetProps {
@@ -42,7 +42,7 @@ const WindWidget: React.FC<WindWidgetProps> = ({
           {degrees} {DEGREES}
         </p>
 
-        <Arrow degrees={parsedDegrees} />
+        <ArrowIcon degrees={parsedDegrees} />
 
         <p>
           {metersPerSecond} {METERS_PER_SECOND}

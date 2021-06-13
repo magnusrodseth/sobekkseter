@@ -1,6 +1,6 @@
 import React from "react";
-import Arrow from "../icons/Arrow";
-import Sun from "../icons/Sun";
+import ArrowIcon from "../icons/ArrowIcon";
+import SunIcon from "../icons/SunIcon";
 import Wrapper from "../Wrapper";
 
 interface SunWidgetProps {
@@ -24,7 +24,8 @@ const SunWidget: React.FC<SunWidgetProps> = ({
 
         <div className="flex flex-row">
           {/* Display sun with fitting arrow, depending on if it is sunrise or not. */}
-          <Sun /> {sunrise ? <Arrow degrees={0} /> : <Arrow degrees={180} />}
+          <SunIcon />{" "}
+          {sunrise ? <ArrowIcon degrees={0} /> : <ArrowIcon degrees={180} />}
         </div>
       </div>
     </Wrapper>

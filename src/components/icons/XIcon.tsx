@@ -1,18 +1,15 @@
 import React from "react";
+import classNames from "../../utils/classNames";
 
-interface ArrowProps {
-  degrees: number;
+interface XIconProps {
+  className?: string;
 }
 
-const Arrow = ({ degrees }: ArrowProps) => {
-  const deg = `${degrees}deg`;
-
-  const styles = {
-    transform: `rotate(${deg})`,
-  };
+const XIcon: React.FC<XIconProps> = ({ className }: XIconProps) => {
+  const styles = className !== undefined ? className : "";
 
   return (
-    <div style={styles} className="mb-1">
+    <div className={classNames(styles)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-6"
@@ -24,11 +21,11 @@ const Arrow = ({ degrees }: ArrowProps) => {
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M8 7l4-4m0 0l4 4m-4-4v18"
+          d="M6 18L18 6M6 6l12 12"
         />
-      </svg>
+      </svg>{" "}
     </div>
   );
 };
 
-export default Arrow;
+export default XIcon;
