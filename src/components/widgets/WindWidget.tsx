@@ -1,6 +1,7 @@
 import React from "react";
 import { DEGREES, METERS_PER_SECOND } from "../../constants";
 import calculateMphToMs from "../../utils/calculateMphToMs";
+import windSpeedToDescription from "../../utils/windSpeedToDescription";
 import Arrow from "../icons/Arrow";
 import Wrapper from "../Wrapper";
 
@@ -27,6 +28,8 @@ const WindWidget: React.FC<WindWidgetProps> = ({
 
   const metersPerSecond = calculateMphToMs(parsedMilesPerHour);
 
+  const description = windSpeedToDescription(metersPerSecond);
+
   const parsedDegrees = parseFloat(degrees);
 
   return (
@@ -41,11 +44,11 @@ const WindWidget: React.FC<WindWidgetProps> = ({
 
         <Arrow degrees={parsedDegrees} />
 
-        <p>{direction.toUpperCase()}</p>
-
         <p>
           {metersPerSecond} {METERS_PER_SECOND}
         </p>
+
+        <p>{description}</p>
       </div>
     </Wrapper>
   );
