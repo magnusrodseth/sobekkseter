@@ -9,6 +9,7 @@ import RainWidget from "./widgets/RainWidget";
 import SunWidget from "./widgets/SunWidget";
 import TemperatureWidget from "./widgets/TemperatureWidget";
 import WindWidget from "./widgets/WindWidget";
+
 interface GridProps {
   conditions: IConditions;
 }
@@ -25,8 +26,8 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
       >
         <WidgetGroup label="Været nå 📷" className="bg-indigo-200">
           <Image
-            src="/img/sample-web-cam.jpeg"
-            alt="Demo Web Camera Image"
+            src="/webcam/01.jpeg"
+            alt="Web Camera Image"
             updated={conditions.observation_time}
           />
         </WidgetGroup>
@@ -52,14 +53,11 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             unit={CELSIUS}
           />
 
-          {/* Note: I don't think this is actually useful. */}
           <TemperatureWidget
             label={"Varmeindeks"}
             value={conditions.heat_index_c}
             unit={CELSIUS}
           />
-
-          {/* TODO: temp monthly, yearly, etc... */}
         </WidgetGroup>
       </li>
 
@@ -71,17 +69,21 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             direction={conditions.wind_dir}
             milesPerHour={conditions.wind_mph}
           />
+
+          {/* 
+            Note that this wind widget is actually a RainWidget component. 
+            This is purely because of aesthetics; using WindWidget would not fit in this scenario. 
+          */}
+          <RainWidget
+            label={"Lufttrykk"}
+            value={conditions.pressure_mb}
+            unit={MILLIBAR}
+          />
         </WidgetGroup>
       </li>
 
       <li>
         <WidgetGroup label="Nedbør 🌧" className="bg-blue-200">
-          <RainWidget
-            label={"Trykk"}
-            value={conditions.pressure_mb}
-            unit={MILLIBAR}
-          />
-
           <RainWidget
             label={"Luftfuktighet"}
             value={conditions.relative_humidity}

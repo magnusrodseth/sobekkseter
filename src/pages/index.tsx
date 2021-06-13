@@ -12,9 +12,6 @@ import Grid from "../components/Grid";
 import Footer from "../components/Footer";
 
 const Index = ({ conditions }: { conditions: IConditions }) => {
-  // TODO: Remove this
-  console.log(conditions);
-
   // Handle loading
   const router = useRouter();
   const [loading, setLoading] = useState(false);
