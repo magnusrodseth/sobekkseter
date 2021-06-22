@@ -24,7 +24,11 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
         className="lg:col-start-2 lg:col-span-2 md:col-start-1 md:col-span-2 sm:col-start-1 sm:col-span-1
                       lg:row-start-1 md:row-start-1 sm:row-start-1"
       >
-        <WidgetGroup label="Været nå 📷" className="bg-indigo-200">
+        <WidgetGroup
+          label="Været nå 📷"
+          className="bg-gray-200"
+          accentColor="gray"
+        >
           <Image
             src="/webcam/01.jpeg"
             alt="Web Camera Image"
@@ -34,7 +38,11 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
       </li>
 
       <li>
-        <WidgetGroup label="Temperatur 🌡" className="bg-yellow-200">
+        <WidgetGroup
+          label="Temperatur 🌡"
+          className="bg-gray-200"
+          accentColor="red"
+        >
           <TemperatureWidget
             label="Temperatur"
             value={conditions.temp_c}
@@ -62,7 +70,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
       </li>
 
       <li className="lg:row-start-2 lg:col-start-2 lg:col-span-2">
-        <WidgetGroup label="Vind 💨" className="bg-gray-200">
+        <WidgetGroup label="Vind 💨" className="bg-gray-200" accentColor="gray">
           <WindWidget
             label="Vind"
             degrees={conditions.wind_degrees}
@@ -83,7 +91,11 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
       </li>
 
       <li>
-        <WidgetGroup label="Nedbør 🌧" className="bg-blue-200">
+        <WidgetGroup
+          label="Nedbør 🌧"
+          className="bg-gray-200"
+          accentColor="blue"
+        >
           <RainWidget
             label={"Luftfuktighet"}
             value={conditions.relative_humidity}
@@ -99,7 +111,11 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
       </li>
 
       <li>
-        <WidgetGroup label="Sol 🌞" className="bg-red-200">
+        <WidgetGroup
+          label="Sol 🌞"
+          className="bg-gray-200"
+          accentColor="yellow"
+        >
           {/* The SunWidget defaults the boolean sunrise flag to be false. */}
           <SunWidget
             label={"Soloppgang"}
@@ -118,7 +134,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
         className="lg:col-start-1 lg:col-span-4 md:col-start-1 md:col-span-2 sm:col-start-1 sm:col-span-1
                       lg:row-start-3 md:row-start-4 sm:row-start-1"
       >
-        <WidgetGroup label="Gjennomsnitt 📊" className="bg-green-200">
+        <WidgetGroup label="Gjennomsnitt 📊" className="bg-gray-200" accentColor="green">
           <div className="grid gap-3 lg:grid-cols-2">
             <MonthlyStats conditions={conditions} />
 
