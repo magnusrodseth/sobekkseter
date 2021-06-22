@@ -23,11 +23,11 @@ Developed by Magnus Rødseth and Julian Grande, Summer 2021.
 
 After cloning the repository, navigate to the `sobekkseter` directory. From now on, this will be the root directory `~`.
 
-First, ensure that you have a `.env` file in your `frontend` folder.
+First, ensure that you have a `.env.local` file in your `src` folder. The naming of this file (`.env.local`) is very important; Next.js [loads these variables at build time](https://nextjs.org/docs/basic-features/environment-variables#loading-environment-variables) for you.
 
-**`.env`**
+**`.env.local`**
 
-```
+```text
 # I'd like to see you try to use these credentials
 
 DID=MyD3v1c31D
@@ -35,7 +35,7 @@ OWNER_PASSWORD=My0wn3rP455w0rd
 TOKEN_ID=MyT0k3n1D
 ```
 
-Now that you have a valid `.env` file, it's time to run the application.
+Now that you have a valid `.env.local` file, it's time to run the application.
 
 ### With Docker 🐳
 
@@ -44,8 +44,8 @@ First, make sure you have Docker **installed and running** on your computer. Use
 **`Terminal`**
 
 ```shell
-# Navigate to the sobekkseter directory (inside the root directory)
-cd sobekkseter
+# Navigate to the src directory (inside the root directory)
+cd sobekkseter/src
 
 # Run the application using Docker
 docker-compose up
@@ -65,11 +65,11 @@ If you do not have `yarn` installed globally on your computer, you can use this 
 **`Terminal`**
 
 ```shell
-# Navigate to the sobekkseter directory (inside the root directory)
-cd sobekkseter
+# Navigate to the src directory (inside the root directory)
+cd sobekkseter/src
 
 # Install dependencies
-yarn install
+yarn
 
 # Run application in development mode
 yarn dev

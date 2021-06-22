@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  nextjs:
+  sobekkseter:
     ports:
       - 3000:3000
     build:
@@ -12,4 +12,4 @@ services:
       - /usr/src/app/node_modules
       - /usr/src/app/.next
     env_file:
-      - .env
+      - .env.local

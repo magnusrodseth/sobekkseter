@@ -9,6 +9,7 @@ import RainWidget from "./widgets/RainWidget";
 import SunWidget from "./widgets/SunWidget";
 import TemperatureWidget from "./widgets/TemperatureWidget";
 import WindWidget from "./widgets/WindWidget";
+import Loading from "./Loading";
 
 interface GridProps {
   conditions: IConditions;
@@ -29,11 +30,18 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
           className="bg-gray-200"
           accentColor="gray"
         >
-          <Image
-            src="/webcam/01.jpeg"
-            alt="Web Camera Image"
-            updated={conditions.observation_time}
-          />
+          {conditions.observation_time ? (
+            <Image
+              src="/webcam/01.jpeg"
+              alt="Web Camera Image"
+              updated={conditions.observation_time}
+            />
+          ) : (
+            <h1>
+              <Loading />
+              Loading...
+            </h1>
+          )}
         </WidgetGroup>
       </li>
 
@@ -102,11 +110,18 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             unit={PERCENT}
           />
 
-          <RainWidget
-            label={"Regn i dag"}
-            value={conditions.davis_current_observation.rain_day_in}
-            unit={INCHES}
-          />
+          {conditions.davis_current_observation.rain_day_in ? (
+            <RainWidget
+              label={"Regn i dag"}
+              value={conditions.davis_current_observation.rain_day_in}
+              unit={INCHES}
+            />
+          ) : (
+            <h1>
+              <Loading />
+              Loading...
+            </h1>
+          )}
         </WidgetGroup>
       </li>
 
@@ -134,7 +149,11 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
         className="lg:col-start-1 lg:col-span-4 md:col-start-1 md:col-span-2 sm:col-start-1 sm:col-span-1
                       lg:row-start-3 md:row-start-4 sm:row-start-1"
       >
-        <WidgetGroup label="Gjennomsnitt 📊" className="bg-gray-200" accentColor="green">
+        <WidgetGroup
+          label="Gjennomsnitt 📊"
+          className="bg-gray-200"
+          accentColor="gray"
+        >
           <div className="grid gap-3 lg:grid-cols-2">
             <MonthlyStats conditions={conditions} />
 
