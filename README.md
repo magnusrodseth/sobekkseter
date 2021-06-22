@@ -44,8 +44,8 @@ First, make sure you have Docker **installed and running** on your computer. Use
 **`Terminal`**
 
 ```shell
-# Navigate to the sobekkseter directory (inside the root directory)
-cd sobekkseter
+# Navigate to the src directory (inside the root directory)
+cd sobekkseter/src
 
 # Run the application using Docker
 docker-compose up
@@ -65,8 +65,8 @@ If you do not have `yarn` installed globally on your computer, you can use this 
 **`Terminal`**
 
 ```shell
-# Navigate to the sobekkseter directory (inside the root directory)
-cd sobekkseter
+# Navigate to the src directory (inside the root directory)
+cd sobekkseter/src
 
 # Install dependencies
 yarn install
