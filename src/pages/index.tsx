@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps = async () => {
     .catch((error) => {
       console.log(`❌ An error occurred: ${error.message}`);
     });
-    
+
   return {
     props: { conditions },
   };

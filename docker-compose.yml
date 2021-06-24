@@ -2,14 +2,15 @@ version: "3.8"
 
 services:
   sobekkseter:
+    container_name: sobekkseter-web
     ports:
       - 3000:3000
     build:
-      context: ./
+      context: ./src
       dockerfile: Dockerfile
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules
       - /usr/src/app/.next
     env_file:
-      - .env.local
+      - ./src/.env.local

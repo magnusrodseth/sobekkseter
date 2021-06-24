@@ -17,7 +17,7 @@ Developed by Magnus Rødseth and Julian Grande, Summer 2021.
 - Next.js
 - TypeScript
 - React
-- Tailwind CSS (Not yet decided CSS framework)
+- Tailwind CSS
 
 ## Running the application locally ⏩
 
