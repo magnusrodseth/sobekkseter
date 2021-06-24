@@ -1,6 +1,6 @@
 import React from "react";
 import { CELSIUS, INCHES, MILLIBAR, PERCENT } from "../constants";
-import IConditions from "../types/IConditions";
+import IConditions, { DavisCurrentObservation } from "../types/IConditions";
 import WidgetGroup from "./WidgetGroup";
 import Image from "./widgets/Image";
 import MonthlyStats from "./stats/MonthlyStats";
@@ -16,6 +16,9 @@ interface GridProps {
 }
 
 const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
+  const davis_current_observation =
+    conditions.davis_current_observation as DavisCurrentObservation;
+
   return (
     <ul
       className="grid gap-3 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1
@@ -110,10 +113,10 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             unit={PERCENT}
           />
 
-          {conditions.davis_current_observation.rain_day_in ? (
+          {davis_current_observation.rain_day_in ? (
             <RainWidget
               label={"Regn i dag"}
-              value={conditions.davis_current_observation.rain_day_in}
+              value={davis_current_observation.rain_day_in}
               unit={INCHES}
             />
           ) : (
@@ -134,13 +137,13 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
           {/* The SunWidget defaults the boolean sunrise flag to be false. */}
           <SunWidget
             label={"Soloppgang"}
-            time={conditions.davis_current_observation.sunrise}
+            time={davis_current_observation.sunrise}
             sunrise
           />
 
           <SunWidget
             label={"Solnedgang"}
-            time={conditions.davis_current_observation.sunset}
+            time={davis_current_observation.sunset}
           />
         </WidgetGroup>
       </li>
