@@ -1,7 +1,7 @@
 import React from "react";
 import { DEGREES, METERS_PER_SECOND } from "../../constants";
 import calculateMphToMs from "../../utils/calculateMphToMs";
-import ArrowIcon from "../icons/ArrowIcon";
+import { ArrowUpIcon } from "@heroicons/react/outline";
 import Wrapper from "../Wrapper";
 
 interface SimpleWindWidgetProps {
