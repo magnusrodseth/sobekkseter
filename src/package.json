@@ -12,28 +12,18 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@craco/craco": "^6.1.2",
     "@headlessui/react": "^1.2.0",
     "@heroicons/react": "^1.0.1",
-    "@types/d3": "^6.7.0",
     "axios": "^0.21.1",
     "dotenv": "^10.0.0",
     "next": "10.2.3",
     "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "recharts": "^2.0.9",
-    "tailwind-react-ui": "^0.8.1"
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.4",
-    "@types/jest": "^26.0.23",
     "@types/react": "17.0.9",
     "autoprefixer": "^10.2.6",
-    "babel-jest": "^26.3.0",
-    "eslint": "^7.7.0",
-    "eslint-plugin-react": "^7.20.6",
     "jest": "^26.4.2",
-    "jest-enzyme": "^7.1.2",
     "postcss": "^8.3.0",
     "tailwindcss": "^2.1.4",
     "ts-jest": "^26.5.4",
