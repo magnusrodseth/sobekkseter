@@ -113,7 +113,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             unit={PERCENT}
           />
 
-          {davis_current_observation.rain_day_in ? (
+          {davis_current_observation ? (
             <RainWidget
               label={"Regn i dag"}
               value={davis_current_observation.rain_day_in}
@@ -128,42 +128,56 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
         </WidgetGroup>
       </li>
 
-      <li>
-        <WidgetGroup
-          label="Sol 🌞"
-          className="bg-gray-200"
-          accentColor="yellow"
-        >
-          {/* The SunWidget defaults the boolean sunrise flag to be false. */}
-          <SunWidget
-            label={"Soloppgang"}
-            time={davis_current_observation.sunrise}
-            sunrise
-          />
+      {davis_current_observation ? (
+        <li>
+          <WidgetGroup
+            label="Sol 🌞"
+            className="bg-gray-200"
+            accentColor="yellow"
+          >
+            {/* The SunWidget defaults the boolean sunrise flag to be false. */}
+            <SunWidget
+              label={"Soloppgang"}
+              time={davis_current_observation.sunrise}
+              sunrise
+            />
 
-          <SunWidget
-            label={"Solnedgang"}
-            time={davis_current_observation.sunset}
-          />
-        </WidgetGroup>
-      </li>
+            <SunWidget
+              label={"Solnedgang"}
+              time={davis_current_observation.sunset}
+            />
+          </WidgetGroup>
+        </li>
+      ) : (
+        <h1>
+          <Loading />
+          Loading...
+        </h1>
+      )}
 
-      <li
-        className="lg:col-start-1 lg:col-span-4 md:col-start-1 md:col-span-2 sm:col-start-1 sm:col-span-1
+      {davis_current_observation ? (
+        <li
+          className="lg:col-start-1 lg:col-span-4 md:col-start-1 md:col-span-2 sm:col-start-1 sm:col-span-1
                       lg:row-start-3 md:row-start-4 sm:row-start-1"
-      >
-        <WidgetGroup
-          label="Gjennomsnitt 📊"
-          className="bg-gray-200"
-          accentColor="gray"
         >
-          <div className="grid gap-3 lg:grid-cols-2">
-            <MonthlyStats conditions={conditions} />
+          <WidgetGroup
+            label="Gjennomsnitt 📊"
+            className="bg-gray-200"
+            accentColor="gray"
+          >
+            <div className="grid gap-3 lg:grid-cols-2">
+              <MonthlyStats conditions={conditions} />
 
-            <YearlyStats conditions={conditions} />
-          </div>
-        </WidgetGroup>
-      </li>
+              <YearlyStats conditions={conditions} />
+            </div>
+          </WidgetGroup>
+        </li>
+      ) : (
+        <h1>
+          <Loading />
+          Loading...
+        </h1>
+      )}
     </ul>
   );
 };

@@ -45,7 +45,7 @@ const WindWidget: React.FC<WindWidgetProps> = ({
         <ArrowIcon degrees={parsedDegrees} />
 
         <p>
-          {metersPerSecond} {METERS_PER_SECOND}
+          {metersPerSecond.toFixed(1)} {METERS_PER_SECOND}
         </p>
 
         <p>{description}</p>
