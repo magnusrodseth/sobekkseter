@@ -26,11 +26,6 @@ jobs:
           cd src
           npm install
 
-      - name: Test and generate coverage report 🧪
-        run: |
-          cd src
-          npm run coverage
-
       - name: Build 🔨
         run: |
           cd src
