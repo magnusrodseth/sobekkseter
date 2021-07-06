@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/outline";
 import { useState } from "react";
 import { useRef } from "react";
+import { IS_PRODUCTION } from "../constants";
 
 const navigation = [
   {
@@ -18,7 +19,7 @@ const navigation = [
     name: "yr.no - Time for time",
     href: "https://www.yr.no/nb/v%C3%A6rvarsel/timetabell/1-114806/Norge/Innlandet/S%C3%B8r-Aurdal/Hedalen%20stavkirke?i=0",
   },
-  { name: "Været på Søbekkseter", href: "/" },
+  { name: "Været på Søbekkseter", href: IS_PRODUCTION ? "/sobekkseter" : "/" },
   {
     name: "yr.no - 10 dager",
     href: "https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-114806/Norge/Innlandet/S%C3%B8r-Aurdal/Hedalen%20stavkirke",

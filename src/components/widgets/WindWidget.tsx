@@ -37,12 +37,12 @@ const WindWidget: React.FC<WindWidgetProps> = ({
       <div className="text-left font-mono text-sm text-gray-600 mb-1">
         {label}
       </div>
-      <div className="flex flex-row space-x-2 text-xl justify-evenly">
-        <p>
+      <div className="flex flex-row md:flex-col justify-evenly md:justify-center items-center text-xl space-y-2 space-x-2">
+        <p className="mt-4">
           {degrees} {DEGREES}
         </p>
 
-        <ArrowIcon degrees={parsedDegrees} />
+        <ArrowIcon degrees={parsedDegrees} className="w-6" />
 
         <p>
           {metersPerSecond.toFixed(1)} {METERS_PER_SECOND}

@@ -40,10 +40,9 @@ const Index = ({ conditions }: { conditions: IConditions }) => {
 
       <main>
         {loading ? (
-          <h1 className="text-4xl">
+          <div className="flex w-screen h-screen justify-center items-center">
             <Loading />
-            Loading...
-          </h1>
+          </div>
         ) : (
           <Grid conditions={conditions} />
         )}
