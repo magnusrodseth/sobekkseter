@@ -35,7 +35,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
         >
           {conditions.observation_time ? (
             <Image
-              src="/webcam/01.jpeg"
+              src="/sobekkseter/img/webcam.jpg"
               alt="Web Camera Image"
               updated={conditions.observation_time}
             />
