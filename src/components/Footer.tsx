@@ -16,6 +16,7 @@ const Footer: React.FC<FooterProps> = ({ supplier, link }: FooterProps) => {
         className="text-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 text-blue-400 hover:text-blue-600 hover:underline"
         href="https://github.com/magnusrodseth"
         target="_blank"
+        rel="noopener"
       >
         Developed by Magnus Rødseth
       </a>
@@ -24,6 +25,7 @@ const Footer: React.FC<FooterProps> = ({ supplier, link }: FooterProps) => {
         className="text-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 text-blue-400 hover:text-blue-600 hover:underline"
         href={link}
         target="_blank"
+        rel="noopener"
       >
         Data supplied by {supplier}
       </a>
