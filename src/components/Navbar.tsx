@@ -59,9 +59,11 @@ const Navbar = () => {
               <div className="flex-1 flex items-center justify-evenly sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   {/* Logo goes here */}
-                  <a href={IS_PRODUCTION ? '/sobekkseter' : '/'} rel="noopener">
+                  <a href={IS_PRODUCTION ? "/sobekkseter" : "/"}>
                     <img
-                      src={`${IS_PRODUCTION ? '/sobekkseter' : ''}/img/logo.png`}
+                      src={`${
+                        IS_PRODUCTION ? "/sobekkseter" : ""
+                      }/img/logo.png`}
                       alt="Logo"
                       className={classNames(
                         "w-10 transition duration-500 ease-in-out transform",
@@ -76,6 +78,7 @@ const Navbar = () => {
                       <a
                         key={item.name}
                         href={item.href}
+                        rel="noopener"
                         target="_blank"
                         className={classNames(
                           "hover:bg-gray-200",
