@@ -59,7 +59,7 @@ const Navbar = () => {
               <div className="flex-1 flex items-center justify-evenly sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   {/* Logo goes here */}
-                  <a href={IS_PRODUCTION ? '/sobekkseter' : '/'}>
+                  <a href={IS_PRODUCTION ? '/sobekkseter' : '/'} rel="noopener">
                     <img
                       src={`${IS_PRODUCTION ? '/sobekkseter' : ''}/img/logo.png`}
                       alt="Logo"
