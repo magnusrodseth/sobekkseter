@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import Grid from "../components/Grid";
 import Footer from "../components/Footer";
 import Loading from "../components/Loading";
+import { IS_PRODUCTION } from "../constants";
 
 const Index = ({ conditions }: { conditions: IConditions }) => {
   // Handle loading
@@ -32,8 +33,23 @@ const Index = ({ conditions }: { conditions: IConditions }) => {
     <div>
       <Head>
         <title>Været på Søbekkseter</title>
-        <meta name="description" content="Været på Søbekkseter" />
-        <link rel="icon" href="/sobekkseter/img/logo.png" />
+        <meta
+          name="description"
+          content={`
+        Været på Søbekkseter.
+        Nettsiden viser nåværende værforhold, live webkamera-bilde og annen nyttig informasjon for hytteeiere i Søbekklia.`}
+        />
+        <meta
+          name="keywords"
+          content={`
+          søbekkseter, været på søbekkseter, været på sobekkseter, 
+          sobekkseter, hytta, valdres, vær, weather, webcamera, 
+          hedalen, hedalen vær, hedalen søbekkseter, sobekklia, søbekklia`}
+        />
+        <link
+          rel="icon"
+          href={`${IS_PRODUCTION ? "/sobekkseter" : ""}/img/logo.png`}
+        />
       </Head>
 
       <Navbar />
