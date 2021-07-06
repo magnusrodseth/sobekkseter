@@ -4,7 +4,7 @@ services:
   sobekkseter:
     container_name: sobekkseter-web
     ports:
-      - 3000:3000
+      - 5000:5000
     build:
       context: ./src
       dockerfile: Dockerfile

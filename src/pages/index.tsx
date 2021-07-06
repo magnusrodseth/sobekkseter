@@ -33,7 +33,7 @@ const Index = ({ conditions }: { conditions: IConditions }) => {
       <Head>
         <title>Været på Søbekkseter</title>
         <meta name="description" content="Været på Søbekkseter" />
-        <link rel="icon" href="/img/logo.png" />
+        <link rel="icon" href="/sobekkseter/img/logo.png" />
       </Head>
 
       <Navbar />
