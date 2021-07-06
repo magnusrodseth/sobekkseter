@@ -43,29 +43,6 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             <Loading />
           )}
         </WidgetGroup>
-
-        <WidgetGroup
-          label="Vind 💨"
-          className="bg-gray-200 my-8"
-          accentColor="gray"
-        >
-          <WindWidget
-            label="Vind"
-            degrees={conditions.wind_degrees}
-            direction={conditions.wind_dir}
-            milesPerHour={conditions.wind_mph}
-          />
-
-          {/* 
-            Note that this wind widget is actually a RainWidget component. 
-            This is purely because of aesthetics; using WindWidget would not fit in this scenario. 
-          */}
-          <RainWidget
-            label={"Lufttrykk"}
-            value={conditions.pressure_mb}
-            unit={MILLIBAR}
-          />
-        </WidgetGroup>
       </li>
 
       <li>
@@ -143,6 +120,29 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
           ) : (
             <Loading />
           )}
+        </WidgetGroup>
+
+        <WidgetGroup
+          label="Vind 💨"
+          className="bg-gray-200 my-8"
+          accentColor="gray"
+        >
+          <WindWidget
+            label="Vind"
+            degrees={conditions.wind_degrees}
+            direction={conditions.wind_dir}
+            milesPerHour={conditions.wind_mph}
+          />
+
+          {/* 
+            Note that this wind widget is actually a RainWidget component. 
+            This is purely because of aesthetics; using WindWidget would not fit in this scenario. 
+          */}
+          <RainWidget
+            label={"Lufttrykk"}
+            value={conditions.pressure_mb}
+            unit={MILLIBAR}
+          />
         </WidgetGroup>
       </li>
 

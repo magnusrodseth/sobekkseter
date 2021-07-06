@@ -1,10 +1,14 @@
 import React from "react";
+import classNames from "../../utils/classNames";
 
 interface ArrowIconProps {
   degrees: number;
+  className?: string;
 }
 
-const ArrowIcon = ({ degrees }: ArrowIconProps) => {
+const ArrowIcon = ({ degrees, className }: ArrowIconProps) => {
+  const style = className || "";
+
   const deg = `${degrees}deg`;
 
   const styles = {
@@ -12,7 +16,7 @@ const ArrowIcon = ({ degrees }: ArrowIconProps) => {
   };
 
   return (
-    <div style={styles} className="mb-1">
+    <div style={styles} className={classNames("mb-1 md:mt-4", style)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-6"
