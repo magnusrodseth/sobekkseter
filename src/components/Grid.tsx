@@ -40,10 +40,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
               updated={conditions.observation_time}
             />
           ) : (
-            <h1>
-              <Loading />
-              Loading...
-            </h1>
+            <Loading />
           )}
         </WidgetGroup>
       </li>
@@ -78,27 +75,28 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             unit={CELSIUS}
           />
         </WidgetGroup>
-      </li>
 
-      <li className="lg:row-start-2 lg:col-start-2 lg:col-span-2">
-        <WidgetGroup label="Vind 💨" className="bg-gray-200" accentColor="gray">
-          <WindWidget
-            label="Vind"
-            degrees={conditions.wind_degrees}
-            direction={conditions.wind_dir}
-            milesPerHour={conditions.wind_mph}
-          />
+        {davis_current_observation ? (
+          <WidgetGroup
+            label="Sol 🌞"
+            className="bg-gray-200 my-8"
+            accentColor="yellow"
+          >
+            {/* The SunWidget defaults the boolean sunrise flag to be false. */}
+            <SunWidget
+              label={"Soloppgang"}
+              time={davis_current_observation.sunrise}
+              sunrise
+            />
 
-          {/* 
-            Note that this wind widget is actually a RainWidget component. 
-            This is purely because of aesthetics; using WindWidget would not fit in this scenario. 
-          */}
-          <RainWidget
-            label={"Lufttrykk"}
-            value={conditions.pressure_mb}
-            unit={MILLIBAR}
-          />
-        </WidgetGroup>
+            <SunWidget
+              label={"Solnedgang"}
+              time={davis_current_observation.sunset}
+            />
+          </WidgetGroup>
+        ) : (
+          <Loading />
+        )}
       </li>
 
       <li>
@@ -120,40 +118,33 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
               unit={INCHES}
             />
           ) : (
-            <h1>
-              <Loading />
-              Loading...
-            </h1>
+            <Loading />
           )}
         </WidgetGroup>
+
+        <WidgetGroup
+          label="Vind 💨"
+          className="bg-gray-200 my-8"
+          accentColor="gray"
+        >
+          <WindWidget
+            label="Vind"
+            degrees={conditions.wind_degrees}
+            direction={conditions.wind_dir}
+            milesPerHour={conditions.wind_mph}
+          />
+
+          {/* 
+            Note that this wind widget is actually a RainWidget component. 
+            This is purely because of aesthetics; using WindWidget would not fit in this scenario. 
+          */}
+          <RainWidget
+            label={"Lufttrykk"}
+            value={conditions.pressure_mb}
+            unit={MILLIBAR}
+          />
+        </WidgetGroup>
       </li>
-
-      {davis_current_observation ? (
-        <li>
-          <WidgetGroup
-            label="Sol 🌞"
-            className="bg-gray-200"
-            accentColor="yellow"
-          >
-            {/* The SunWidget defaults the boolean sunrise flag to be false. */}
-            <SunWidget
-              label={"Soloppgang"}
-              time={davis_current_observation.sunrise}
-              sunrise
-            />
-
-            <SunWidget
-              label={"Solnedgang"}
-              time={davis_current_observation.sunset}
-            />
-          </WidgetGroup>
-        </li>
-      ) : (
-        <h1>
-          <Loading />
-          Loading...
-        </h1>
-      )}
 
       {davis_current_observation ? (
         <li
@@ -173,10 +164,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
           </WidgetGroup>
         </li>
       ) : (
-        <h1>
-          <Loading />
-          Loading...
-        </h1>
+        <Loading />
       )}
     </ul>
   );
