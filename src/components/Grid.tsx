@@ -40,14 +40,15 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
               updated={conditions.observation_time}
             />
           ) : (
-            <h1>
-              <Loading />
-              Loading...
-            </h1>
+            <Loading />
           )}
         </WidgetGroup>
 
-        <WidgetGroup label="Vind 💨" className="bg-gray-200 my-8" accentColor="gray">
+        <WidgetGroup
+          label="Vind 💨"
+          className="bg-gray-200 my-8"
+          accentColor="gray"
+        >
           <WindWidget
             label="Vind"
             degrees={conditions.wind_degrees}
@@ -117,10 +118,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             />
           </WidgetGroup>
         ) : (
-          <h1>
-            <Loading />
-            Loading...
-          </h1>
+          <Loading />
         )}
       </li>
 
@@ -143,10 +141,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
               unit={INCHES}
             />
           ) : (
-            <h1>
-              <Loading />
-              Loading...
-            </h1>
+            <Loading />
           )}
         </WidgetGroup>
       </li>
@@ -169,10 +164,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
           </WidgetGroup>
         </li>
       ) : (
-        <h1>
-          <Loading />
-          Loading...
-        </h1>
+        <Loading />
       )}
     </ul>
   );
