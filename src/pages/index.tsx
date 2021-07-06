@@ -1,7 +1,7 @@
 import Head from "next/head";
 import axios from "axios";
 import IConditions from "../types/IConditions";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Navbar from "../components/Navbar";
@@ -58,7 +58,7 @@ const Index = ({ conditions }: { conditions: IConditions }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const conditionsURL = `https://api.weatherlink.com/v1/NoaaExt.json?user=${process.env.DID}&pass=${process.env.OWNER_PASSWORD}&apiToken=${process.env.TOKEN_ID}`;
 
   const conditions = await axios
