@@ -10,6 +10,7 @@ import SunWidget from "./widgets/SunWidget";
 import TemperatureWidget from "./widgets/TemperatureWidget";
 import WindWidget from "./widgets/WindWidget";
 import Loading from "./Loading";
+import { IS_PRODUCTION } from "../constants";
 
 interface GridProps {
   conditions: IConditions;
@@ -35,7 +36,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
         >
           {conditions.observation_time ? (
             <Image
-              src="/sobekkseter/img/webcam.jpg"
+              src={`${IS_PRODUCTION ? '/sobekkseter' : ''}/img/webcam.jpg`}
               alt="Web Camera Image"
               updated={conditions.observation_time}
             />

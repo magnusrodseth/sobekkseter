@@ -59,9 +59,9 @@ const Navbar = () => {
               <div className="flex-1 flex items-center justify-evenly sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   {/* Logo goes here */}
-                  <a href="/">
+                  <a href={IS_PRODUCTION ? '/sobekkseter' : '/'}>
                     <img
-                      src="/img/logo.png"
+                      src={`${IS_PRODUCTION ? '/sobekkseter' : ''}/img/logo.png`}
                       alt="Logo"
                       className={classNames(
                         "w-10 transition duration-500 ease-in-out transform",
