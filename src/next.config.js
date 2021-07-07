@@ -9,5 +9,5 @@ module.exports = {
 
     return config;
   },
-  basePath: '/sobekkseter',
+  basePath: process.env.NODE_ENV === "production" ? "/sobekkseter" : "",
 };
