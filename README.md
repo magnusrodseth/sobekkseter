@@ -8,6 +8,10 @@ This project is the official code base for the website [Været på Søbekkseter]
 
 ![Data Flow Illustration](./static/img/data-flow-illustration.png)
 
+## Google Lighthouse Rating
+
+![Google Lighthouse Rating](./static/img/lighthouse-rating.png)
+
 ## Developer information 🙋🏼‍♂️
 
 Developed by Magnus Rødseth and Julian Grande, Summer 2021.
