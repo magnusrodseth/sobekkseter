@@ -7,19 +7,19 @@ import RainWidget from "../widgets/RainWidget";
 import SimpleWindWidget from "../widgets/SimpleWindWidget";
 import TemperatureWidget from "../widgets/TemperatureWidget";
 
-interface MonthlyStatsProps {
+interface DailyStatsProps {
   conditions: IConditions;
 }
 
-const MonthlyStats: React.FC<MonthlyStatsProps> = ({
+const DailyStats: React.FC<DailyStatsProps> = ({
   conditions,
-}: MonthlyStatsProps) => {
+}: DailyStatsProps) => {
   return (
-    <WidgetGroup label="Månedlig" className="bg-gray-100">
+    <WidgetGroup label="Daglig" className="bg-gray-100">
       <TemperatureWidget
         label="Temperatur (min)"
         value={calculateFahrenheitToCelsius(
-          parseFloat(conditions.davis_current_observation.temp_month_low_f)
+          parseFloat(conditions.davis_current_observation.temp_day_low_f)
         ).toFixed(1)}
         unit={CELSIUS}
       />
@@ -27,7 +27,7 @@ const MonthlyStats: React.FC<MonthlyStatsProps> = ({
       <TemperatureWidget
         label="Temperatur (max)"
         value={calculateFahrenheitToCelsius(
-          parseFloat(conditions.davis_current_observation.temp_month_high_f)
+          parseFloat(conditions.davis_current_observation.temp_day_high_f)
         ).toFixed(1)}
         unit={CELSIUS}
       />
@@ -35,9 +35,7 @@ const MonthlyStats: React.FC<MonthlyStatsProps> = ({
       <TemperatureWidget
         label="Varmeindeks (max)"
         value={calculateFahrenheitToCelsius(
-          parseFloat(
-            conditions.davis_current_observation.heat_index_month_high_f
-          )
+          parseFloat(conditions.davis_current_observation.heat_index_day_high_f)
         ).toFixed(1)}
         unit={CELSIUS}
       />
@@ -45,7 +43,7 @@ const MonthlyStats: React.FC<MonthlyStatsProps> = ({
       <TemperatureWidget
         label="Følt temperatur (min)"
         value={calculateFahrenheitToCelsius(
-          parseFloat(conditions.davis_current_observation.windchill_month_low_f)
+          parseFloat(conditions.davis_current_observation.windchill_day_low_f)
         ).toFixed(1)}
         unit={CELSIUS}
       />
@@ -53,7 +51,7 @@ const MonthlyStats: React.FC<MonthlyStatsProps> = ({
       <TemperatureWidget
         label="Duggpunkt (min)"
         value={calculateFahrenheitToCelsius(
-          parseFloat(conditions.davis_current_observation.dewpoint_month_low_f)
+          parseFloat(conditions.davis_current_observation.dewpoint_day_low_f)
         ).toFixed(1)}
         unit={CELSIUS}
       />
@@ -61,37 +59,35 @@ const MonthlyStats: React.FC<MonthlyStatsProps> = ({
       <TemperatureWidget
         label="Duggpunkt (max)"
         value={calculateFahrenheitToCelsius(
-          parseFloat(conditions.davis_current_observation.dewpoint_month_high_f)
+          parseFloat(conditions.davis_current_observation.dewpoint_day_high_f)
         ).toFixed(1)}
         unit={CELSIUS}
       />
 
       <RainWidget
         label="Nedbør"
-        value={conditions.davis_current_observation.rain_month_in}
+        value={conditions.davis_current_observation.rain_day_in}
         unit={INCHES}
       />
 
       <RainWidget
         label="Luftfuktighet (min)"
-        value={conditions.davis_current_observation.relative_humidity_month_low}
+        value={conditions.davis_current_observation.relative_humidity_day_low}
         unit={PERCENT}
       />
 
       <RainWidget
         label="Luftfuktighet (max)"
-        value={
-          conditions.davis_current_observation.relative_humidity_month_high
-        }
+        value={conditions.davis_current_observation.relative_humidity_day_high}
         unit={PERCENT}
       />
 
       <SimpleWindWidget
         label="Vindstyrke (max)"
-        milesPerHour={conditions.davis_current_observation.wind_month_high_mph}
+        milesPerHour={conditions.davis_current_observation.wind_day_high_mph}
       />
     </WidgetGroup>
   );
 };
 
-export default MonthlyStats;
+export default DailyStats;

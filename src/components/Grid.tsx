@@ -11,6 +11,7 @@ import TemperatureWidget from "./widgets/TemperatureWidget";
 import WindWidget from "./widgets/WindWidget";
 import Loading from "./Loading";
 import { IS_PRODUCTION } from "../constants";
+import DailyStats from "./stats/DailyStats";
 
 interface GridProps {
   conditions: IConditions;
@@ -36,7 +37,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
         >
           {conditions.observation_time ? (
             <Image
-              src={`${IS_PRODUCTION ? '/sobekkseter' : ''}/img/webcam.jpg`}
+              src={`${IS_PRODUCTION ? "/sobekkseter" : ""}/img/webcam.jpg`}
               alt="Web Camera Image"
               updated={conditions.observation_time}
             />
@@ -149,7 +150,7 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
 
       {davis_current_observation ? (
         <li
-          className="lg:col-start-1 lg:col-span-4 md:col-start-1 md:col-span-2 sm:col-start-1 sm:col-span-1
+          className="col-start-1 lg:col-span-4 md:col-span-2 sm:col-span-1
                       lg:row-start-3 md:row-start-4 sm:row-start-1"
         >
           <WidgetGroup
@@ -157,7 +158,9 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             className="bg-gray-200"
             accentColor="gray"
           >
-            <div className="grid gap-3 lg:grid-cols-2">
+            <div className="grid gap-3 lg:grid-cols-3">
+              <DailyStats conditions={conditions} />
+
               <MonthlyStats conditions={conditions} />
 
               <YearlyStats conditions={conditions} />
