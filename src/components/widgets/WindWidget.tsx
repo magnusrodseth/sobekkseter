@@ -34,9 +34,12 @@ const WindWidget: React.FC<WindWidgetProps> = ({
 
   return (
     <Wrapper>
-      <div className="text-left font-mono text-sm text-gray-600 mb-1">
-        {label}
+      <div className="flex flex-row justify-between">
+        <div className="text-left font-mono text-sm text-gray-600 mb-1">
+          {label}
+        </div>
       </div>
+
       <div className="flex flex-row md:flex-col justify-evenly md:justify-center items-center text-xl space-y-2 space-x-2">
         <p className="mt-4">
           {degrees} {DEGREES}

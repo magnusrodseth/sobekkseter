@@ -22,6 +22,7 @@ const DailyStats: React.FC<DailyStatsProps> = ({
           parseFloat(conditions.davis_current_observation.temp_day_low_f)
         ).toFixed(1)}
         unit={CELSIUS}
+        time={conditions.davis_current_observation.temp_day_low_time}
       />
 
       <TemperatureWidget
@@ -30,6 +31,7 @@ const DailyStats: React.FC<DailyStatsProps> = ({
           parseFloat(conditions.davis_current_observation.temp_day_high_f)
         ).toFixed(1)}
         unit={CELSIUS}
+        time={conditions.davis_current_observation.temp_day_high_time}
       />
 
       <TemperatureWidget
@@ -38,6 +40,7 @@ const DailyStats: React.FC<DailyStatsProps> = ({
           parseFloat(conditions.davis_current_observation.heat_index_day_high_f)
         ).toFixed(1)}
         unit={CELSIUS}
+        time={conditions.davis_current_observation.heat_index_day_high_time}
       />
 
       <TemperatureWidget
@@ -46,6 +49,7 @@ const DailyStats: React.FC<DailyStatsProps> = ({
           parseFloat(conditions.davis_current_observation.windchill_day_low_f)
         ).toFixed(1)}
         unit={CELSIUS}
+        time={conditions.davis_current_observation.windchill_day_low_time}
       />
 
       <TemperatureWidget
@@ -54,6 +58,7 @@ const DailyStats: React.FC<DailyStatsProps> = ({
           parseFloat(conditions.davis_current_observation.dewpoint_day_low_f)
         ).toFixed(1)}
         unit={CELSIUS}
+        time={conditions.davis_current_observation.dewpoint_day_low_time}
       />
 
       <TemperatureWidget
@@ -62,6 +67,7 @@ const DailyStats: React.FC<DailyStatsProps> = ({
           parseFloat(conditions.davis_current_observation.dewpoint_day_high_f)
         ).toFixed(1)}
         unit={CELSIUS}
+        time={conditions.davis_current_observation.dewpoint_day_high_time}
       />
 
       <RainWidget
@@ -74,17 +80,24 @@ const DailyStats: React.FC<DailyStatsProps> = ({
         label="Luftfuktighet (min)"
         value={conditions.davis_current_observation.relative_humidity_day_low}
         unit={PERCENT}
+        time={
+          conditions.davis_current_observation.relative_humidity_day_low_time
+        }
       />
 
       <RainWidget
         label="Luftfuktighet (max)"
         value={conditions.davis_current_observation.relative_humidity_day_high}
         unit={PERCENT}
+        time={
+          conditions.davis_current_observation.relative_humidity_day_high_time
+        }
       />
 
       <SimpleWindWidget
         label="Vindstyrke (max)"
         milesPerHour={conditions.davis_current_observation.wind_day_high_mph}
+        time={conditions.davis_current_observation.wind_day_high_time}
       />
     </WidgetGroup>
   );

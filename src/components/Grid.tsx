@@ -21,6 +21,8 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
   const davis_current_observation =
     conditions.davis_current_observation as DavisCurrentObservation;
 
+  console.log(conditions);
+
   return (
     <ul
       className="grid gap-3 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1
@@ -144,6 +146,9 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
             label={"Lufttrykk"}
             value={conditions.pressure_mb}
             unit={MILLIBAR}
+            tendency={
+              conditions.davis_current_observation.pressure_tendency_string
+            }
           />
         </WidgetGroup>
       </li>
