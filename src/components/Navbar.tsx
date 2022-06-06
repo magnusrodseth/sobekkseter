@@ -26,7 +26,7 @@ const navigation = [
   },
   {
     name: "Hedalen Løypelag",
-    href: "http://hedalen.no/loypelag/",
+    href: "https://hedalen.no/foreninger/hedalen-loypelag/",
   },
 ];
 
