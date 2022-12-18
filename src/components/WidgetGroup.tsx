@@ -1,0 +1,34 @@
+import type { ReactNode } from "react";
+import Wrapper from "./Wrapper";
+import classNames from "../utils/classNames";
+
+interface WidgetGroupProps {
+  label: string;
+  className?: string;
+  accentColor?: string;
+  children: ReactNode;
+}
+
+const WidgetGroup = ({
+  label,
+  className,
+  accentColor,
+  children,
+}: WidgetGroupProps) => {
+  return (
+    <Wrapper className={className}>
+      <h1 className={classNames("font-mono text-2xl font-bold")}>{label}</h1>
+      {accentColor ? (
+        <div
+          className={classNames(
+            "my-3 h-1 w-auto rounded-md",
+            `bg-${accentColor}-400 opacity-50`
+          )}
+        />
+      ) : null}
+      {children}
+    </Wrapper>
+  );
+};
+
+export default WidgetGroup;
