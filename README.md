@@ -1,9 +1,5 @@
 # Været på Søbekseter
 
-## Description ✏️
-
-This project is the official code base for the website [Været på Søbekkseter](sobekkseter.systemsoft.no).
-
 ## Data flow 📝
 
 ![Data flow](./static/data-flow.png)
