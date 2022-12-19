@@ -15,9 +15,10 @@ import Loading from "./Loading";
 
 interface GridProps {
   conditions: Conditions;
+  imageUrl: string;
 }
 
-const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
+const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
   const davis_current_observation =
     conditions.davis_current_observation as DavisCurrentObservation;
 
@@ -36,13 +37,15 @@ const Grid: React.FC<GridProps> = ({ conditions }: GridProps) => {
           accentColor="gray"
         >
           {conditions.observation_time ? (
-            <WebcameraImage
-              src={"/img/logo.png"}
-              alt="Web Camera Image"
-              width={640}
-              height={480}
-              updated={conditions.observation_time}
-            />
+            <div className="flex items-start justify-center">
+              <WebcameraImage
+                src={imageUrl}
+                alt="Web Camera Image"
+                width={640}
+                height={480}
+                updated={conditions.observation_time}
+              />
+            </div>
           ) : (
             <Loading />
           )}

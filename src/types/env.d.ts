@@ -5,6 +5,10 @@ declare global {
       TOKEN_ID: string;
       OWNER_PASSWORD: string;
       DEVICE_ID: string;
+
+      FIREBASE_API_KEY: string;
+      FIREBASE_PROJECT_ID: string;
+      FIREBASE_STORAGE_BUCKET: string;
     }
   }
 }
