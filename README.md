@@ -1,5 +1,9 @@
 # Været på Søbekseter
 
+## Description
+
+The official Været på Søbekkseter website. The website displays real-time weather data and a live camera feed from Søbekkseter, Norway.
+
 ## Data flow 📝
 
 ![Data flow](./static/data-flow.png)
