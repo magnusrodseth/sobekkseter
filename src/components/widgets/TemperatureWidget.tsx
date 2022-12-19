@@ -28,12 +28,12 @@ const TemperatureWidget: React.FC<TemperatureProps> = ({
   return (
     <Wrapper>
       <div className="flex flex-row justify-between">
-        <div className="text-left font-mono text-sm text-gray-600 mb-1">
+        <div className="mb-1 text-left font-mono text-sm text-gray-600">
           {label}
         </div>
 
         {time ? (
-          <div className="text-sm text-right font-bold font-mono uppercase text-gray-600 mb-1">
+          <div className="mb-1 text-right font-mono text-sm font-bold uppercase text-gray-600">
             {time}
           </div>
         ) : null}
@@ -42,8 +42,8 @@ const TemperatureWidget: React.FC<TemperatureProps> = ({
       <div
         className={
           parsedValue > 0
-            ? "text-red-400 text-center text-2xl"
-            : "text-blue-400 text-center text-2xl"
+            ? "text-center text-2xl text-red-600"
+            : "text-center text-2xl text-blue-600"
         }
       >
         {value} {unit}

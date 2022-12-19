@@ -2,7 +2,7 @@ const Loading = () => {
   return (
     <div className="min-h-container mt-20 flex items-center justify-center">
       <svg
-        className="h-12 w-12 animate-spin text-blue-400"
+        className="h-12 w-12 animate-spin text-blue-600"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"

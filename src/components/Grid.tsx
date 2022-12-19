@@ -43,6 +43,8 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
                 alt="Web Camera Image"
                 width={640}
                 height={480}
+                placeholder="blur"
+                blurDataURL={imageUrl}
                 updated={conditions.observation_time}
               />
             </div>

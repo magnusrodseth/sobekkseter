@@ -55,7 +55,7 @@ const RainWidget: React.FC<RainWidgetProps> = ({
       <div
         className={
           parsedValue > 0
-            ? "text-center text-2xl text-blue-400"
+            ? "text-center text-2xl text-blue-600"
             : "text-center text-2xl"
         }
       >

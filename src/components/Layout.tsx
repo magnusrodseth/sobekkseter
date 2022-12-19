@@ -21,7 +21,13 @@ const Layout: FC<LayoutProps> = ({ children }) => {
           content={`
           søbekkseter, været på søbekkseter, været på sobekkseter, 
           sobekkseter, hytta, valdres, vær, weather, webcamera, 
-          hedalen, hedalen vær, hedalen søbekkseter, sobekklia, søbekklia
+          hedalen, hedalen vær, hedalen søbekkseter, sobekklia, søbekklia,
+          værvarsel, værvarsel søbekkseter, værvarsel sobekkseter,
+          værvarsel hedalen, værvarsel valdres, værvarsel søbekklia,
+          sanntid, sanntid vær, sanntid værvarsel, sanntid værvarsel søbekkseter,
+          værdata, værdata søbekkseter, værdata sobekkseter, værdata hedalen,
+          sanntidsvær, sanntidsværvarsel, værkamera, værkamera søbekkseter,
+          sanntidsværmelding
           `}
         />
         <link rel="icon" href="/img/logo.png" />

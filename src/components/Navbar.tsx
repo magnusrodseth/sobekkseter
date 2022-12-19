@@ -92,7 +92,7 @@ const Navbar = () => {
                     ))}
                     <QuestionMarkCircleIcon
                       className={classNames(
-                        "h-8 w-8 text-blue-400",
+                        "h-8 w-8 text-blue-600",
                         "transform transition duration-500 ease-in-out",
                         "cursor-pointer hover:-translate-y-1"
                       )}
@@ -112,7 +112,7 @@ const Navbar = () => {
                   href={item.href}
                   target="_blank"
                   className={classNames(
-                    "hover:bg-gray-200",
+                    "hover:bg-gray-100",
                     "block rounded-md px-3 py-2 text-base font-medium",
                     "hover:scale-101 transform transition duration-500 ease-in-out hover:-translate-y-1",
                     "hover:shadow-md"
@@ -124,7 +124,7 @@ const Navbar = () => {
               ))}
               <QuestionMarkCircleIcon
                 className={classNames(
-                  "h-8 w-8 text-blue-400",
+                  "h-8 w-8 text-blue-600",
                   "transform transition duration-500 ease-in-out",
                   "cursor-pointer hover:-translate-y-1"
                 )}
