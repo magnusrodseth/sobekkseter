@@ -9,6 +9,7 @@ type AppProviderProps = {
 const AppProvider: FC<AppProviderProps> = ({ children }) => {
   return (
     <Layout>
+
       {children}
 
       <Analytics />
