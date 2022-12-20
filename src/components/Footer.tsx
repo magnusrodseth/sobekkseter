@@ -22,7 +22,7 @@ const Footer = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Data supplert av WeatherLink
+        Data levert av WeatherLink
       </Link>
     </footer>
   );
