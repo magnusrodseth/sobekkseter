@@ -27,6 +27,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { conditions, imageUrl },
+    // We revalidate every 50 seconds because the conditions are updated every minute,
+    // and we want to make sure we don't miss any updates.
     revalidate: 50,
   };
 };
