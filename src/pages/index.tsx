@@ -3,7 +3,6 @@ import { conditionsUrl } from "@/constants";
 import getImageUrl from "@/lib/download";
 import type Conditions from "@/types/conditions";
 import axios from "axios";
-import type { GetStaticProps } from "next";
 import type { FC } from "react";
 
 type IndexProps = {
@@ -15,7 +14,7 @@ const IndexPage: FC<IndexProps> = ({ conditions, imageUrl }) => {
   return <Grid conditions={conditions} imageUrl={imageUrl} />;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps = async () => {
   const conditions = await axios
     .get(conditionsUrl)
     .then((res) => res.data as Conditions)
@@ -27,8 +26,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { conditions, imageUrl },
-    // We want to revalidate the page every 60 seconds because new conditions come in every minute
-    revalidate: 60,
   };
 };
 
