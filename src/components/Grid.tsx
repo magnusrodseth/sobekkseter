@@ -44,8 +44,9 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
                 width={640}
                 height={480}
                 placeholder="blur"
-                blurDataURL={imageUrl}
+                blurDataURL={"/animations/cloudy.svg"}
                 updated={conditions.observation_time}
+                priority
               />
             </div>
           ) : (
