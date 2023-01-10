@@ -7,7 +7,14 @@ import { storage } from "./firebase";
  */
 const getImageUrl = async (path: string) => {
   const imageRef = ref(storage, path);
-  return await getDownloadURL(imageRef).then((url) => url);
+  const url = await getDownloadURL(imageRef).then((url) => url);
+
+  // Remove token parameter from url, but keep the alt=media
+  // url looks like this: https://firebasestorage.googleapis.com/v0/b/.../o/...?alt=media&token=...
+  // This is done to ensure that Vercel sources only 1 image url, instead of the dynamically generated url using tokens.
+  const urlWithoutToken = url.split("&token=")[0];
+
+  return urlWithoutToken;
 };
 
 export default getImageUrl;
