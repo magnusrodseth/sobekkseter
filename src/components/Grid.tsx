@@ -160,6 +160,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
       <li>
         <AdSenseBanner />
       </li>
+
       {davis_current_observation ? (
         <li
           className="col-start-1 sm:col-span-1 sm:row-start-1 md:col-span-2
