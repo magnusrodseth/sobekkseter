@@ -14,7 +14,7 @@ const AdSenseBanner = () => {
         data-ad-format="auto"
         data-full-width-responsive="true"
       ></ins>
-      <Script id="custom">
+      <Script id="banner-custom">
         (adsbygoogle = window.adsbygoogle || []).push({});
       </Script>
     </>

@@ -12,7 +12,8 @@ import DailyStats from "./stats/DailyStats";
 import type Conditions from "@/types/conditions";
 import type { DavisCurrentObservation } from "@/types/conditions";
 import Loading from "./Loading";
-import AdSenseBanner from "./AdSenseBanner";
+import AdSenseBanner from "./ads/AdSenseBanner";
+import AdSenseMultiplex from "./ads/AdSenseMultiplex";
 
 interface GridProps {
   conditions: Conditions;
@@ -54,6 +55,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
             <Loading />
           )}
         </WidgetGroup>
+        <AdSenseBanner />
       </li>
       <li>
         <WidgetGroup
@@ -85,7 +87,6 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
             unit={CELSIUS}
           />
         </WidgetGroup>
-
         {davis_current_observation ? (
           <WidgetGroup
             label="Sol 🌞"
@@ -107,6 +108,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
         ) : (
           <Loading />
         )}
+        <AdSenseBanner />
       </li>
       <li>
         <WidgetGroup
@@ -130,7 +132,6 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
             <Loading />
           )}
         </WidgetGroup>
-
         <WidgetGroup
           label="Vind 💨"
           className="my-8 bg-gray-200"
@@ -142,7 +143,6 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
             direction={conditions.wind_dir}
             milesPerHour={conditions.wind_mph}
           />
-
           {/* 
             Note that this wind widget is actually a RainWidget component. 
             This is purely because of aesthetics; using WindWidget would not fit in this scenario. 
@@ -156,6 +156,8 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
             }
           />
         </WidgetGroup>
+        <AdSenseBanner />
+        <AdSenseBanner />
       </li>
       <li>
         <AdSenseBanner />
@@ -179,6 +181,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
               <YearlyStats conditions={conditions} />
             </div>
           </WidgetGroup>
+          <AdSenseMultiplex />
         </li>
       ) : (
         <Loading />
