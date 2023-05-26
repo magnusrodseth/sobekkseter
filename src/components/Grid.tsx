@@ -12,6 +12,7 @@ import DailyStats from "./stats/DailyStats";
 import type Conditions from "@/types/conditions";
 import type { DavisCurrentObservation } from "@/types/conditions";
 import Loading from "./Loading";
+import AdSenseBanner from "./AdSenseBanner";
 
 interface GridProps {
   conditions: Conditions;
@@ -54,7 +55,6 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           )}
         </WidgetGroup>
       </li>
-
       <li>
         <WidgetGroup
           label="Temperatur 🌡"
@@ -108,7 +108,6 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           <Loading />
         )}
       </li>
-
       <li>
         <WidgetGroup
           label="Nedbør 🌧"
@@ -158,7 +157,9 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           />
         </WidgetGroup>
       </li>
-
+      <li>
+        <AdSenseBanner />
+      </li>
       {davis_current_observation ? (
         <li
           className="col-start-1 sm:col-span-1 sm:row-start-1 md:col-span-2
