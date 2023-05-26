@@ -6,7 +6,7 @@ The official Været på Søbekkseter website. The website displays real-time wea
 
 ## Data flow 📝
 
-![Data flow](./static/data-flow.png)
+![Data flow](./assets/data-flow.png)
 
 ## Developer Information 🙋🏼‍♂️
 
