@@ -18,7 +18,7 @@ const WidgetGroup = ({
   const accent = accentColor ? `bg-${accentColor}-200` : "bg-gray-100";
   return (
     <Wrapper className={className}>
-      <h1 className={classNames("font-mono text-2xl font-bold")}>{label}</h1>
+      <h1 className={classNames(" text-2xl font-bold")}>{label}</h1>
       {accentColor && (
         <div
           className={classNames(

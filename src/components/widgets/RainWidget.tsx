@@ -36,18 +36,16 @@ const RainWidget: React.FC<RainWidgetProps> = ({
   return (
     <Wrapper>
       <div className="flex flex-row justify-between">
-        <div className="mb-1 text-left font-mono text-sm text-gray-600">
-          {label}
-        </div>
+        <div className="mb-1 text-left  text-sm text-gray-600">{label}</div>
 
         {time ? (
-          <div className="mb-1 text-right font-mono text-sm font-bold uppercase text-gray-600">
+          <div className="mb-1 text-right  text-sm font-bold uppercase text-gray-600">
             {time}
           </div>
         ) : null}
 
         {tendency ? (
-          <div className="mb-1 text-right font-mono text-sm font-bold text-gray-600">
+          <div className="mb-1 text-right  text-sm font-bold text-gray-600">
             {tendency}
           </div>
         ) : null}

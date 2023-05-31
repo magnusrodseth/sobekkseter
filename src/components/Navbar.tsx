@@ -40,11 +40,11 @@ const Navbar = () => {
   };
 
   return (
-    <Disclosure as="nav" className="text-center font-mono">
+    <Disclosure as="nav" className="text-center ">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div className="relative mt-2 mb-2 flex items-center justify-evenly">
+            <div className="relative mb-2 mt-2 flex items-center justify-evenly">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-evenly rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -105,7 +105,7 @@ const Navbar = () => {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="flex flex-col items-center justify-center space-y-1 px-2 pt-2 pb-3">
+            <div className="flex flex-col items-center justify-center space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
                 <a
                   key={item.name}
@@ -143,7 +143,7 @@ const Navbar = () => {
               open={modalIsOpen}
               onClose={setModalIsOpen}
             >
-              <div className="flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+              <div className="flex min-h-screen items-end justify-center px-4 pb-20 pt-4 text-center sm:block sm:p-0">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-out duration-300"
@@ -173,9 +173,9 @@ const Navbar = () => {
                   leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 >
                   <div className="inline-block transform overflow-hidden rounded-lg bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:align-middle">
-                    <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                       <div className="sm:flex sm:items-start">
-                        <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                        <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                           <Dialog.Title
                             as="h2"
                             className="py-6 text-4xl font-medium leading-6 text-gray-900"

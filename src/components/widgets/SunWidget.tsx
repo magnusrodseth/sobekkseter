@@ -19,9 +19,7 @@ const SunWidget: React.FC<SunWidgetProps> = ({
 }: SunWidgetProps) => {
   return (
     <Wrapper>
-      <div className="mb-1 text-left font-mono text-sm text-gray-600">
-        {label}
-      </div>
+      <div className="mb-1 text-left  text-sm text-gray-600">{label}</div>
       <div className="flex flex-row justify-evenly space-x-2 text-xl">
         <p>{time}</p>
 
