@@ -27,7 +27,8 @@ const Layout: FC<LayoutProps> = ({ children }) => {
           sanntid, sanntid vær, sanntid værvarsel, sanntid værvarsel søbekkseter,
           værdata, værdata søbekkseter, værdata sobekkseter, værdata hedalen,
           sanntidsvær, sanntidsværvarsel, værkamera, værkamera søbekkseter,
-          sanntidsværmelding
+          sanntidsværmelding,
+          webcamera, været
           `}
         />
         <link rel="icon" href="/img/logo.png" />
