@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Været på Søbekkseter",
@@ -36,6 +37,8 @@ export default function RootLayout({ children }: LayoutProps) {
         <main>{children}</main>
 
         <Footer />
+
+        <Analytics />
       </body>
     </html>
   );
