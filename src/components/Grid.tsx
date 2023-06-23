@@ -11,8 +11,9 @@ import WindWidget from "./widgets/WindWidget";
 import DailyStats from "./stats/DailyStats";
 import type Conditions from "@/types/conditions";
 import type { DavisCurrentObservation } from "@/types/conditions";
-import Loading from "./Loading";
 import ImageSkeleton from "./ImageSkeleton";
+import { CameraIcon } from "lucide-react";
+import CardSkeleton from "./CardSkeleton";
 
 interface GridProps {
   conditions: Conditions;
@@ -32,7 +33,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
         className="sm:col-span-1 sm:col-start-1 sm:row-start-1 md:col-span-2 md:col-start-1 md:row-start-1
                       lg:col-span-2 lg:col-start-2 lg:row-start-1"
       >
-        <WidgetGroup label="Været nå 📷">
+        <WidgetGroup label="Været nå">
           {conditions.observation_time ? (
             <div className="flex items-start justify-center">
               {imageUrl ? (
@@ -49,12 +50,12 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
               )}
             </div>
           ) : (
-            <Loading />
+            <CardSkeleton />
           )}
         </WidgetGroup>
       </li>
       <li>
-        <WidgetGroup label="Temperatur 🌡">
+        <WidgetGroup label="Temperatur">
           <TemperatureWidget
             label="Temperatur"
             value={conditions.temp_c}
@@ -80,7 +81,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           />
         </WidgetGroup>
         {davis_current_observation ? (
-          <WidgetGroup label="Sol 🌞" className="my-8">
+          <WidgetGroup label="Sol" className="my-8">
             {/* The SunWidget defaults the boolean sunrise flag to be false. */}
             <SunWidget
               label={"Soloppgang"}
@@ -94,11 +95,11 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
             />
           </WidgetGroup>
         ) : (
-          <Loading />
+          <CardSkeleton />
         )}
       </li>
       <li>
-        <WidgetGroup label="Nedbør 🌧">
+        <WidgetGroup label="Nedbør">
           <RainWidget
             label={"Luftfuktighet"}
             value={conditions.relative_humidity}
@@ -112,10 +113,10 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
               unit={INCHES}
             />
           ) : (
-            <Loading />
+            <CardSkeleton />
           )}
         </WidgetGroup>
-        <WidgetGroup label="Vind 💨" className="my-8">
+        <WidgetGroup label="Vind" className="my-8">
           <WindWidget
             label="Vind"
             degrees={conditions.wind_degrees}
@@ -142,7 +143,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           className="col-start-1 sm:col-span-1 sm:row-start-1 md:col-span-2
                       md:row-start-4 lg:col-span-4 lg:row-start-3"
         >
-          <WidgetGroup label="Gjennomsnitt 📊">
+          <WidgetGroup label="Gjennomsnitt">
             <div className="grid gap-3 lg:grid-cols-3">
               <DailyStats conditions={conditions} />
 
@@ -153,7 +154,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           </WidgetGroup>
         </li>
       ) : (
-        <Loading />
+        <CardSkeleton />
       )}
     </ul>
   );

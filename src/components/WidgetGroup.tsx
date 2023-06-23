@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import Wrapper from "./Wrapper";
 import { Card, CardHeader, CardTitle } from "./ui/card";
 import { cn } from "@/lib/utils";
 

@@ -5,7 +5,7 @@ type CardSkeletonProps = {
   entries?: number;
 };
 
-const CardSkeleton = ({ entries = 5 }: CardSkeletonProps) => {
+const CardSkeleton = ({ entries = 3 }: CardSkeletonProps) => {
   return (
     <Card className="h-full w-full p-4">
       <CardContent>
