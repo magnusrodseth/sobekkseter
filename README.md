@@ -14,11 +14,12 @@ Developed by Magnus Rødseth.
 
 ## Tech Stack 🛠
 
-This project was bootstrapped using the [T3 stack](https://create.t3.gg/). It uses the following technologies:
+It uses the following technologies:
 
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [`shadcn/ui`](https://ui.shadcn.com/)
 
 ## Running the application ✅
 
