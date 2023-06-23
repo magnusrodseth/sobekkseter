@@ -13,6 +13,17 @@ import type Conditions from "@/types/conditions";
 import type { DavisCurrentObservation } from "@/types/conditions";
 import ImageSkeleton from "./ImageSkeleton";
 import CardSkeleton from "./CardSkeleton";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+import translateLastUpdated from "@/utils/translateLastUpdated";
+import { AspectRatio } from "./ui/aspect-ratio";
 
 interface GridProps {
   conditions: Conditions;
@@ -36,14 +47,36 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           {conditions.observation_time ? (
             <div className="flex items-start justify-center">
               {imageUrl ? (
-                <WebcameraImage
-                  src={imageUrl}
-                  alt="Web Camera Image"
-                  width={640}
-                  height={480}
-                  updated={conditions.observation_time}
-                  priority
-                />
+                <Dialog>
+                  <DialogTrigger>
+                    <WebcameraImage
+                      src={imageUrl}
+                      alt="Web Camera Image"
+                      width={640}
+                      height={480}
+                      updated={conditions.observation_time}
+                      priority
+                      className="rounded-md"
+                    />
+                  </DialogTrigger>
+                  <DialogContent className="min-w-[80%]">
+                    <AspectRatio ratio={16 / 9}>
+                      <WebcameraImage
+                        src={imageUrl}
+                        alt="Web Camera Image"
+                        updated={conditions.observation_time}
+                        priority
+                        fill
+                        className="rounded-md"
+                      />
+                    </AspectRatio>
+                    <DialogFooter>
+                      <DialogDescription>
+                        {translateLastUpdated(conditions.observation_time)}
+                      </DialogDescription>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
               ) : (
                 <ImageSkeleton />
               )}

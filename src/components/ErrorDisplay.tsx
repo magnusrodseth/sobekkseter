@@ -21,7 +21,7 @@ const ErrorDisplay = ({
 
       <H3>{description}</H3>
 
-      <Link href={redirectHref}>
+      <Link href={redirectHref} className="appearance-none">
         <Button className="mt-4" variant="default">
           {buttonText}
         </Button>
