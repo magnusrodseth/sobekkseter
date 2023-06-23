@@ -12,7 +12,6 @@ import DailyStats from "./stats/DailyStats";
 import type Conditions from "@/types/conditions";
 import type { DavisCurrentObservation } from "@/types/conditions";
 import ImageSkeleton from "./ImageSkeleton";
-import { CameraIcon } from "lucide-react";
 import CardSkeleton from "./CardSkeleton";
 
 interface GridProps {

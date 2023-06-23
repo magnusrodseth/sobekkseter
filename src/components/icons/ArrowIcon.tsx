@@ -14,9 +14,12 @@ const ArrowIcon: FC<ArrowIconProps> = ({
   const rotate = `rotate(${degrees}deg)`;
 
   return (
-    <div className={cn(rotate, className)}>
-      <ChevronsUpIcon />
-    </div>
+    <ChevronsUpIcon
+      className={cn(className)}
+      style={{
+        transform: rotate,
+      }}
+    />
   );
 };
 

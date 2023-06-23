@@ -1,16 +1,6 @@
-import {
-  ArrowLongDownIcon,
-  ArrowLongUpIcon,
-  SunIcon,
-} from "@heroicons/react/24/outline";
 import React from "react";
 import Wrapper from "../Wrapper";
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  SunriseIcon,
-  SunsetIcon,
-} from "lucide-react";
+import { SunriseIcon, SunsetIcon } from "lucide-react";
 
 interface SunWidgetProps {
   label: string;
