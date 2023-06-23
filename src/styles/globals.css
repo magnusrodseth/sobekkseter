@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+a {
+  @apply bg-grass-400 bg-clip-text text-transparent;
+  @apply relative inline-block fill-transparent;
+  @apply transition-all duration-300 ease-in-out;
+  background-size: 200% 100%;
+  background-position: -100%;
+}
+
+a:before {
+  content: "";
+  @apply absolute bottom-[-1px] left-0 block h-[2px] w-0 bg-gradient-to-r from-grass-500 to-lime-500;
+  @apply transition-all duration-300 ease-in-out;
+}
+
+a:hover {
+  background-position: 0;
+}
+
+a:hover::before {
+  width: 100%;
+}

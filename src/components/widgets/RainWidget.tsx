@@ -2,6 +2,7 @@ import { INCHES, MILLIMETERS } from "@/constants";
 import calculateInToMm from "@/utils/calculateInToMm";
 import React from "react";
 import Wrapper from "../Wrapper";
+import { Muted } from "../ui/typography";
 
 interface RainWidgetProps {
   label: string;
@@ -36,19 +37,11 @@ const RainWidget: React.FC<RainWidgetProps> = ({
   return (
     <Wrapper>
       <div className="flex flex-row justify-between">
-        <div className="mb-1 text-left  text-sm text-gray-600">{label}</div>
+        <Muted>{label}</Muted>
 
-        {time ? (
-          <div className="mb-1 text-right  text-sm font-bold uppercase text-gray-600">
-            {time}
-          </div>
-        ) : null}
+        {time && <Muted>{time}</Muted>}
 
-        {tendency ? (
-          <div className="mb-1 text-right  text-sm font-bold text-gray-600">
-            {tendency}
-          </div>
-        ) : null}
+        {tendency && <Muted className="font-bold">{tendency}</Muted>}
       </div>
       <div
         className={

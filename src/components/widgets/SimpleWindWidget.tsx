@@ -2,6 +2,7 @@ import { METERS_PER_SECOND } from "@/constants";
 import calculateMphToMs from "@/utils/calculateMphToMs";
 import React from "react";
 import Wrapper from "../Wrapper";
+import { Muted } from "../ui/typography";
 
 interface SimpleWindWidgetProps {
   label: string;
@@ -27,7 +28,7 @@ const SimpleWindWidget: React.FC<SimpleWindWidgetProps> = ({
   return (
     <Wrapper>
       <div className="flex flex-row justify-between">
-        <div className="mb-1 text-left  text-sm text-gray-600">{label}</div>
+        <Muted>{label}</Muted>
 
         {time ? (
           <div className="mb-1 text-right  text-sm font-bold uppercase text-gray-600">

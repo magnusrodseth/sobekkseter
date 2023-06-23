@@ -1,34 +1,21 @@
 import type { ReactNode } from "react";
-import Wrapper from "./Wrapper";
-import classNames from "../utils/classNames";
+import { Card, CardHeader, CardTitle } from "./ui/card";
+import { cn } from "@/lib/utils";
 
 interface WidgetGroupProps {
   label: string;
   className?: string;
-  accentColor?: string;
   children: ReactNode;
 }
 
-const WidgetGroup = ({
-  label,
-  className,
-  accentColor,
-  children,
-}: WidgetGroupProps) => {
-  const accent = accentColor ? `bg-${accentColor}-200` : "bg-gray-100";
+const WidgetGroup = ({ label, className, children }: WidgetGroupProps) => {
   return (
-    <Wrapper className={className}>
-      <h1 className={classNames(" text-2xl font-bold")}>{label}</h1>
-      {accentColor && (
-        <div
-          className={classNames(
-            "my-3 h-1 w-auto rounded-md",
-            `${accent} opacity-50`
-          )}
-        />
-      )}
+    <Card className={cn(className, "p-2")}>
+      <CardHeader>
+        <CardTitle>{label}</CardTitle>
+      </CardHeader>
       {children}
-    </Wrapper>
+    </Card>
   );
 };
 
