@@ -1,5 +1,5 @@
-import classNames from "@/utils/classNames";
-import { ArrowUpIcon } from "@heroicons/react/24/outline";
+import { cn } from "@/lib/utils";
+import { ChevronsUpIcon } from "lucide-react";
 import type { FC } from "react";
 
 type ArrowIconProps = {
@@ -14,8 +14,8 @@ const ArrowIcon: FC<ArrowIconProps> = ({
   const rotate = `rotate(${degrees}deg)`;
 
   return (
-    <div className={classNames(rotate, className || "")}>
-      <ArrowUpIcon />
+    <div className={cn(rotate, className)}>
+      <ChevronsUpIcon />
     </div>
   );
 };

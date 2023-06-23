@@ -12,12 +12,11 @@ import DailyStats from "./stats/DailyStats";
 import type Conditions from "@/types/conditions";
 import type { DavisCurrentObservation } from "@/types/conditions";
 import Loading from "./Loading";
-import AdSenseBanner from "./ads/AdSenseBanner";
-import AdSenseMultiplex from "./ads/AdSenseMultiplex";
+import ImageSkeleton from "./ImageSkeleton";
 
 interface GridProps {
   conditions: Conditions;
-  imageUrl: string;
+  imageUrl?: string;
 }
 
 const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
@@ -26,43 +25,36 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
 
   return (
     <ul
-      className="m-5 grid auto-rows-max gap-3 sm:grid-cols-1
+      className="m-4 grid auto-rows-max gap-4 sm:grid-cols-1
       md:grid-cols-2 lg:grid-cols-4"
     >
       <li
         className="sm:col-span-1 sm:col-start-1 sm:row-start-1 md:col-span-2 md:col-start-1 md:row-start-1
                       lg:col-span-2 lg:col-start-2 lg:row-start-1"
       >
-        <WidgetGroup
-          label="Været nå 📷"
-          className="bg-gray-200"
-          accentColor="gray"
-        >
+        <WidgetGroup label="Været nå 📷">
           {conditions.observation_time ? (
             <div className="flex items-start justify-center">
-              <WebcameraImage
-                src={imageUrl}
-                alt="Web Camera Image"
-                width={640}
-                height={480}
-                placeholder="blur"
-                blurDataURL={"/animations/cloudy.svg"}
-                updated={conditions.observation_time}
-                priority
-              />
+              {imageUrl ? (
+                <WebcameraImage
+                  src={imageUrl}
+                  alt="Web Camera Image"
+                  width={640}
+                  height={480}
+                  updated={conditions.observation_time}
+                  priority
+                />
+              ) : (
+                <ImageSkeleton />
+              )}
             </div>
           ) : (
             <Loading />
           )}
         </WidgetGroup>
-        <AdSenseBanner />
       </li>
       <li>
-        <WidgetGroup
-          label="Temperatur 🌡"
-          className="bg-gray-200"
-          accentColor="red"
-        >
+        <WidgetGroup label="Temperatur 🌡">
           <TemperatureWidget
             label="Temperatur"
             value={conditions.temp_c}
@@ -88,11 +80,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           />
         </WidgetGroup>
         {davis_current_observation ? (
-          <WidgetGroup
-            label="Sol 🌞"
-            className="my-8 bg-gray-200"
-            accentColor="yellow"
-          >
+          <WidgetGroup label="Sol 🌞" className="my-8">
             {/* The SunWidget defaults the boolean sunrise flag to be false. */}
             <SunWidget
               label={"Soloppgang"}
@@ -108,14 +96,9 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
         ) : (
           <Loading />
         )}
-        <AdSenseBanner />
       </li>
       <li>
-        <WidgetGroup
-          label="Nedbør 🌧"
-          className="bg-gray-200"
-          accentColor="blue"
-        >
+        <WidgetGroup label="Nedbør 🌧">
           <RainWidget
             label={"Luftfuktighet"}
             value={conditions.relative_humidity}
@@ -132,11 +115,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
             <Loading />
           )}
         </WidgetGroup>
-        <WidgetGroup
-          label="Vind 💨"
-          className="my-8 bg-gray-200"
-          accentColor="gray"
-        >
+        <WidgetGroup label="Vind 💨" className="my-8">
           <WindWidget
             label="Vind"
             degrees={conditions.wind_degrees}
@@ -156,11 +135,6 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
             }
           />
         </WidgetGroup>
-        <AdSenseBanner />
-        <AdSenseBanner />
-      </li>
-      <li>
-        <AdSenseBanner />
       </li>
 
       {davis_current_observation ? (
@@ -168,11 +142,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           className="col-start-1 sm:col-span-1 sm:row-start-1 md:col-span-2
                       md:row-start-4 lg:col-span-4 lg:row-start-3"
         >
-          <WidgetGroup
-            label="Gjennomsnitt 📊"
-            className="bg-gray-200"
-            accentColor="gray"
-          >
+          <WidgetGroup label="Gjennomsnitt 📊">
             <div className="grid gap-3 lg:grid-cols-3">
               <DailyStats conditions={conditions} />
 
@@ -181,7 +151,6 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
               <YearlyStats conditions={conditions} />
             </div>
           </WidgetGroup>
-          <AdSenseMultiplex />
         </li>
       ) : (
         <Loading />

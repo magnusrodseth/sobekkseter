@@ -15,7 +15,7 @@ const YearlyStats: React.FC<YearlyStatsProps> = ({
   conditions,
 }: YearlyStatsProps) => {
   return (
-    <WidgetGroup label="Årlig" className="bg-gray-100">
+    <WidgetGroup label="Årlig">
       <TemperatureWidget
         label="Temperatur (min)"
         value={Math.round(

@@ -15,7 +15,7 @@ const MonthlyStats: React.FC<MonthlyStatsProps> = ({
   conditions,
 }: MonthlyStatsProps) => {
   return (
-    <WidgetGroup label="Månedlig" className="bg-gray-100">
+    <WidgetGroup label="Månedlig">
       <TemperatureWidget
         label="Temperatur (min)"
         value={calculateFahrenheitToCelsius(

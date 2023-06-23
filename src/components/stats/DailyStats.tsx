@@ -15,7 +15,7 @@ const DailyStats: React.FC<DailyStatsProps> = ({
   conditions,
 }: DailyStatsProps) => {
   return (
-    <WidgetGroup label="Daglig" className="bg-gray-100">
+    <WidgetGroup label="Daglig">
       <TemperatureWidget
         label="Temperatur (min)"
         value={calculateFahrenheitToCelsius(
