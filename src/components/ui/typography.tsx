@@ -58,3 +58,9 @@ export function Muted({ className, children }: TypographyProps) {
     <p className={cn("text-muted-foreground text-sm", className)}>{children}</p>
   );
 }
+
+export function Large({ className, children }: TypographyProps) {
+  return (
+    <div className={cn("text-lg font-semibold", className)}>{children}</div>
+  );
+}

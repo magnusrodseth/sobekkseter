@@ -16,13 +16,17 @@ import {
 import { Button } from "./ui/button";
 import navigation from "@/lib/navigation";
 import { MenuIcon, SunIcon } from "lucide-react";
+import { Large } from "./ui/typography";
 
 const Navbar = () => {
   return (
     <div className="flex w-full items-center justify-between border-b-[1px] border-slate-200 p-4">
-      <Link className="flex items-center justify-center space-x-2" href="/">
+      <Link
+        className="flex items-center justify-center space-x-2 text-slate-900"
+        href="/"
+      >
         <SunIcon className="h-5 w-5" />
-        <span>Været på Søbekkseter</span>
+        <Large>Været på Søbekkseter</Large>
       </Link>
 
       <Sheet>
@@ -40,9 +44,13 @@ const Navbar = () => {
           </SheetHeader>
           <div className="mt-8 flex flex-col items-center justify-center space-y-4">
             {navigation.map((item, i) => {
-              // TODO: Style links
               return (
-                <Link href={item.href} key={i} target="_blank">
+                <Link
+                  href={item.href}
+                  key={i}
+                  target="_blank"
+                  className="text-grass-700 transition-colors duration-200 hover:text-grass-600"
+                >
                   {item.title}
                 </Link>
               );
