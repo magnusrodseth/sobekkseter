@@ -2,12 +2,11 @@ import Grid from "@/components/Grid";
 import { conditionsUrl } from "@/constants";
 import getImageUrl from "@/lib/download";
 import type Conditions from "@/types/conditions";
-import axios from "axios";
 
-export const getData = async () => {
-  const conditions = await axios
-    .get(conditionsUrl)
-    .then((res) => res.data as Conditions);
+const getData = async () => {
+  const conditions = await fetch(conditionsUrl, {
+    cache: "no-cache",
+  }).then(async (res) => (await res.json()) as Conditions);
 
   const imageUrl = await getImageUrl("webcamera.jpg");
 

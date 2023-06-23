@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { H1, H2, H3 } from "./ui/typography";
+import { H1, H3 } from "./ui/typography";
 
 type ErrorDisplayProps = {
   title: string;
