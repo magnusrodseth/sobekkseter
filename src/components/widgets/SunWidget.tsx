@@ -1,6 +1,7 @@
 import React from "react";
 import Wrapper from "../Wrapper";
 import { SunriseIcon, SunsetIcon } from "lucide-react";
+import { Muted } from "../ui/typography";
 
 interface SunWidgetProps {
   label: string;
@@ -15,7 +16,7 @@ const SunWidget: React.FC<SunWidgetProps> = ({
 }: SunWidgetProps) => {
   return (
     <Wrapper>
-      <div className="mb-1 text-left  text-sm text-gray-600">{label}</div>
+      <Muted>{label}</Muted>
       <div className="flex flex-row justify-evenly space-x-2 text-xl">
         <p>{time}</p>
 

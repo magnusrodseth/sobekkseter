@@ -44,3 +44,17 @@ export function H3({ className, children }: TypographyProps) {
     </h3>
   );
 }
+
+export function P({ className, children }: TypographyProps) {
+  return (
+    <p className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}>
+      {children}
+    </p>
+  );
+}
+
+export function Muted({ className, children }: TypographyProps) {
+  return (
+    <p className={cn("text-muted-foreground text-sm", className)}>{children}</p>
+  );
+}

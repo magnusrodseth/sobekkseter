@@ -127,7 +127,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
             This is purely because of aesthetics; using WindWidget would not fit in this scenario. 
           */}
           <RainWidget
-            label={"Lufttrykk"}
+            label="Lufttrykk"
             value={conditions.pressure_mb}
             unit={MILLIBAR}
             tendency={
