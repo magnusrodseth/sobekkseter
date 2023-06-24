@@ -45,12 +45,7 @@ const Navbar = () => {
           <div className="mt-8 flex flex-col items-center justify-center space-y-4">
             {navigation.map((item, i) => {
               return (
-                <Link
-                  href={item.href}
-                  key={i}
-                  target="_blank"
-                  className="text-grass-700 transition-colors duration-200 hover:text-grass-600"
-                >
+                <Link href={item.href} key={i} target="_blank">
                   {item.title}
                 </Link>
               );

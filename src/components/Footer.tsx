@@ -7,7 +7,6 @@ const Footer = () => {
         href="https://www.weatherlink.com/"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-grass-700 transition-colors duration-200 hover:text-grass-600"
       >
         Data levert av WeatherLink
       </Link>
@@ -16,9 +15,8 @@ const Footer = () => {
         href="https://github.com/magnusrodseth"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-grass-700 transition-colors duration-200 hover:text-grass-600"
       >
-        Utviklet av Magnus Rødseth med 🫶🏼
+        Utviklet av Magnus Rødseth
       </Link>
     </footer>
   );
