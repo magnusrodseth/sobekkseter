@@ -67,14 +67,13 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
                         updated={conditions.observation_time}
                         priority
                         fill
+                        sizes="50vw"
                         className="rounded-md"
                       />
                     </AspectRatio>
-                    <DialogFooter>
-                      <DialogDescription>
-                        {translateLastUpdated(conditions.observation_time)}
-                      </DialogDescription>
-                    </DialogFooter>
+                    <DialogDescription className="flex items-center justify-center">
+                      {translateLastUpdated(conditions.observation_time)}
+                    </DialogDescription>
                   </DialogContent>
                 </Dialog>
               ) : (
