@@ -20,3 +20,4 @@ const IndexPage = async () => {
 };
 
 export default IndexPage;
+
