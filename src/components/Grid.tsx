@@ -24,6 +24,7 @@ import {
 } from "./ui/dialog";
 import translateLastUpdated from "@/utils/translateLastUpdated";
 import { AspectRatio } from "./ui/aspect-ratio";
+import getRain from "@/utils/getRain";
 
 interface GridProps {
   conditions: Conditions;
@@ -140,13 +141,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           {davis_current_observation ? (
             <RainWidget
               label={"Regn i dag"}
-              value={
-                // If the parsed rain in inches is not defined, try to use the rain storm in inches. 
-                // Fallback to the defined rain in inches.
-                !parseFloat(davis_current_observation.rain_day_in) ?
-                  davis_current_observation.rain_storm_in :
-                  davis_current_observation.rain_day_in
-              }
+              value={getRain(conditions)}
               unit={INCHES}
             />
           ) : (

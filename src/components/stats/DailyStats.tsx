@@ -6,6 +6,7 @@ import WidgetGroup from "../WidgetGroup";
 import RainWidget from "../widgets/RainWidget";
 import SimpleWindWidget from "../widgets/SimpleWindWidget";
 import TemperatureWidget from "../widgets/TemperatureWidget";
+import getRain from "@/utils/getRain";
 
 interface DailyStatsProps {
   conditions: Conditions;
@@ -72,7 +73,7 @@ const DailyStats: React.FC<DailyStatsProps> = ({
 
       <RainWidget
         label="Nedbør"
-        value={conditions.davis_current_observation.rain_day_in}
+        value={getRain(conditions)}
         unit={INCHES}
       />
 
