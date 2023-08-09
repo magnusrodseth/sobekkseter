@@ -140,7 +140,13 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           {davis_current_observation ? (
             <RainWidget
               label={"Regn i dag"}
-              value={davis_current_observation.rain_day_in}
+              value={
+                // If the parsed rain in inches is not defined, try to use the rain storm in inches. 
+                // Fallback to the defined rain in inches.
+                !parseFloat(davis_current_observation.rain_day_in) ?
+                  davis_current_observation.rain_storm_in :
+                  davis_current_observation.rain_day_in
+              }
               unit={INCHES}
             />
           ) : (

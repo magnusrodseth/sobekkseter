@@ -16,6 +16,8 @@ const getData = async () => {
 const IndexPage = async () => {
   const { conditions, imageUrl } = await getData();
 
+  console.log(conditions)
+
   return <Grid conditions={conditions} imageUrl={imageUrl} />;
 };
 
