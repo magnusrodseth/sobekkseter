@@ -17,14 +17,12 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
 import translateLastUpdated from "@/utils/translateLastUpdated";
 import { AspectRatio } from "./ui/aspect-ratio";
 import getRain from "@/utils/getRain";
+import toMilitaryTime from "@/utils/toMilitaryTime";
 
 interface GridProps {
   conditions: Conditions;
@@ -117,13 +115,13 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
             {/* The SunWidget defaults the boolean sunrise flag to be false. */}
             <SunWidget
               label={"Soloppgang"}
-              time={davis_current_observation.sunrise}
+              time={toMilitaryTime(davis_current_observation.sunrise)}
               sunrise
             />
 
             <SunWidget
               label={"Solnedgang"}
-              time={davis_current_observation.sunset}
+              time={toMilitaryTime(davis_current_observation.sunset)}
             />
           </WidgetGroup>
         ) : (

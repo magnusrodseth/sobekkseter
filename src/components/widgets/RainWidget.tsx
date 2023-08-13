@@ -39,7 +39,11 @@ const RainWidget: React.FC<RainWidgetProps> = ({
       <div className="flex flex-row justify-between">
         <Muted>{label}</Muted>
 
-        {time && <Muted>{time}</Muted>}
+        {time ? (
+          <div className="mb-1 text-right  text-sm font-bold uppercase text-gray-600">
+            {time}
+          </div>
+        ) : null}
 
         {tendency && <Muted className="font-bold">{tendency}</Muted>}
       </div>
