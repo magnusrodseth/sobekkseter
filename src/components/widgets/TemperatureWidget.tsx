@@ -32,7 +32,7 @@ const TemperatureWidget: React.FC<TemperatureProps> = ({
         <Muted>{label}</Muted>
 
         {time ? (
-          <div className="mb-1 text-right  text-sm font-bold uppercase text-gray-600">
+          <div className="text-right  text-sm font-bold uppercase text-gray-600">
             {time}
           </div>
         ) : null}
