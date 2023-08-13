@@ -67,7 +67,7 @@ const MonthlyStats: React.FC<MonthlyStatsProps> = ({
       />
 
       <RainWidget
-        label="Nedbør"
+        label="Nedbør (max)"
         value={conditions.davis_current_observation.rain_month_in}
         unit={INCHES}
       />

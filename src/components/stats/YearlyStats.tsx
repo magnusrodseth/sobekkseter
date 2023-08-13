@@ -71,7 +71,7 @@ const YearlyStats: React.FC<YearlyStatsProps> = ({
       />
 
       <RainWidget
-        label="Nedbør"
+        label="Nedbør (max)"
         value={conditions.davis_current_observation.rain_year_in}
         unit={INCHES}
       />
