@@ -1,4 +1,6 @@
 const toMilitaryTime = (time: string) => {
+  if (!time) return time;
+
   const match = time.match(/^(\d{1,2}):(\d{2})([apAP][mM])$/);
 
   if (!match) {
