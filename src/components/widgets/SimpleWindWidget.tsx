@@ -6,7 +6,7 @@ import { Muted } from "../ui/typography";
 
 interface SimpleWindWidgetProps {
   label: string;
-  milesPerHour: string;
+  milesPerHour: string | undefined;
   time?: string;
 }
 
@@ -15,6 +15,8 @@ const SimpleWindWidget: React.FC<SimpleWindWidgetProps> = ({
   milesPerHour,
   time,
 }: SimpleWindWidgetProps) => {
+  if(!milesPerHour) return null;
+
   let parsedMilesPerHour: number;
 
   try {

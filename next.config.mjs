@@ -5,7 +5,9 @@ const config = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["firebasestorage.googleapis.com"],
+    remotePatterns: [{
+      hostname: "firebasestorage.googleapis.com",
+    }]
   },
 };
 export default config;
