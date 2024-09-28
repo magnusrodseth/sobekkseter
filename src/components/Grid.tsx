@@ -42,7 +42,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           <AlertTriangle className="h-4 w-4" />
           <AlertTitle>Viktig informasjon</AlertTitle>
           <AlertDescription>
-            Webkameraet er for tiden ute avdrift grunnet en teknisk feil. Nye
+            Webkameraet er for tiden ute av drift grunnet en teknisk feil. Nye
             deler er bestilt, men det er litt bestillingstid. Vi beklager
             ulempen.{" "}
             <span className="font-semibold">
