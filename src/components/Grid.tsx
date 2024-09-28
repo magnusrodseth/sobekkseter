@@ -23,6 +23,8 @@ import translateLastUpdated from "@/utils/translateLastUpdated";
 import { AspectRatio } from "./ui/aspect-ratio";
 import getRain from "@/utils/getRain";
 import toMilitaryTime from "@/utils/toMilitaryTime";
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
+import { AlertTriangle, Info } from "lucide-react";
 
 interface GridProps {
   conditions: Conditions;
@@ -34,14 +36,18 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
     conditions.davis_current_observation as DavisCurrentObservation;
 
   return (
-    <ul
-      className="m-4 grid auto-rows-max gap-4 sm:grid-cols-1
-      md:grid-cols-2 lg:grid-cols-4"
-    >
-      <li
-        className="sm:col-span-1 sm:col-start-1 sm:row-start-1 md:col-span-2 md:col-start-1 md:row-start-1
-                      lg:col-span-2 lg:col-start-2 lg:row-start-1"
-      >
+    <ul className="m-4 grid auto-rows-max gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <li className="flex flex-col gap-2 sm:col-span-1 sm:col-start-1 sm:row-start-1 md:col-span-2 md:col-start-1 md:row-start-1 lg:col-span-2 lg:col-start-2 lg:row-start-1">
+        <Alert variant="warning">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertTitle>Viktig informasjon</AlertTitle>
+          <AlertDescription>
+            Det er for øyeblikket en feil med webkameraet som gjør at bildet
+            ikke oppdateres. Vi jobber med å løse problemet, og beklager
+            ulempen.
+          </AlertDescription>
+        </Alert>
+
         <WidgetGroup label="Været nå">
           {conditions.observation_time ? (
             <div className="flex items-start justify-center">
@@ -169,10 +175,7 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
       </li>
 
       {davis_current_observation ? (
-        <li
-          className="col-start-1 sm:col-span-1 sm:row-start-1 md:col-span-2
-                      md:row-start-4 lg:col-span-4 lg:row-start-3"
-        >
+        <li className="col-start-1 sm:col-span-1 sm:row-start-1 md:col-span-2 md:row-start-4 lg:col-span-4 lg:row-start-3">
           <WidgetGroup label="Gjennomsnitt">
             <div className="grid gap-3 lg:grid-cols-3">
               <DailyStats conditions={conditions} />
