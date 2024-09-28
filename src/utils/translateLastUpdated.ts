@@ -48,12 +48,12 @@ const translateLastUpdated = (lastUpdated: string) => {
   const parsedTime = moment(time, "hh:mm a").format("HH:mm");
   const parsedDay = moment(day, "DD").format("DD");
   const parsedMonth = monthNumberToNorwegianMonthName(
-    parseInt(moment(month, "MMM").format("M"))
+    parseInt(moment(month, "MMM").format("M")),
   );
   const parsedYear = moment(year, "YYYY").format("YYYY");
   const formattedDate = `${parsedDay}. ${parsedMonth} ${parsedYear}, ${parsedTime}`;
 
-  return `Sist oppdatert ${formattedDate}`;
+  return `Værdata er sist oppdatert ${formattedDate}`;
 };
 
 export default translateLastUpdated;

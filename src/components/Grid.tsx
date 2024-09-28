@@ -42,9 +42,12 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
           <AlertTriangle className="h-4 w-4" />
           <AlertTitle>Viktig informasjon</AlertTitle>
           <AlertDescription>
-            Det er for øyeblikket en feil med webkameraet som gjør at bildet
-            ikke oppdateres. Vi jobber med å løse problemet, og beklager
-            ulempen.
+            Webkameraet er for tiden ute avdrift grunnet en teknisk feil. Nye
+            deler er bestilt, men det er litt bestillingstid. Vi beklager
+            ulempen.{" "}
+            <span className="font-semibold">
+              Værdataene er fortsatt oppdaterte.
+            </span>
           </AlertDescription>
         </Alert>
 
