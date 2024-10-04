@@ -38,19 +38,6 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
   return (
     <ul className="m-4 grid auto-rows-max gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       <li className="flex flex-col gap-2 sm:col-span-1 sm:col-start-1 sm:row-start-1 md:col-span-2 md:col-start-1 md:row-start-1 lg:col-span-2 lg:col-start-2 lg:row-start-1">
-        <Alert variant="warning">
-          <AlertTriangle className="h-4 w-4" />
-          <AlertTitle>Viktig informasjon</AlertTitle>
-          <AlertDescription>
-            Webkameraet er for tiden ute av drift grunnet en teknisk feil. Nye
-            deler er bestilt, men det er litt bestillingstid. Vi beklager
-            ulempen.{" "}
-            <span className="font-semibold">
-              Værdataene er fortsatt oppdaterte.
-            </span>
-          </AlertDescription>
-        </Alert>
-
         <WidgetGroup label="Været nå">
           {conditions.observation_time ? (
             <div className="flex items-start justify-center">
