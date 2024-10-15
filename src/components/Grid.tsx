@@ -28,7 +28,7 @@ import { AlertTriangle, Info } from "lucide-react";
 
 interface GridProps {
   conditions: Conditions;
-  imageUrl?: string;
+  imageUrl?: string | null;
 }
 
 const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
