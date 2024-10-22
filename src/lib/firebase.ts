@@ -13,7 +13,7 @@ import { getStorage } from "firebase/storage";
 const firebaseApp = (config: FirebaseOptions): FirebaseApp => {
   try {
     return getApp();
-  } catch (error) {
+  } catch (_) {
     return initializeApp(config);
   }
 };

@@ -28,7 +28,7 @@ const RainWidget: React.FC<RainWidgetProps> = ({
 
   try {
     parsedValue = parseFloat(value);
-  } catch (error) {
+  } catch (_) {
     return null;
   }
 
@@ -40,7 +40,7 @@ const RainWidget: React.FC<RainWidgetProps> = ({
         <Muted>{label}</Muted>
 
         {time ? (
-          <div className="mb-1 text-right  text-sm font-bold uppercase text-gray-600">
+          <div className="mb-1 text-right text-sm font-bold uppercase text-gray-600">
             {time}
           </div>
         ) : null}

@@ -23,8 +23,6 @@ import translateLastUpdated from "@/utils/translateLastUpdated";
 import { AspectRatio } from "./ui/aspect-ratio";
 import getRain from "@/utils/getRain";
 import toMilitaryTime from "@/utils/toMilitaryTime";
-import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
-import { AlertTriangle, Info } from "lucide-react";
 
 interface GridProps {
   conditions: Conditions;

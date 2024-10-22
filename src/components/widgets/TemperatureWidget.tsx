@@ -22,7 +22,7 @@ const TemperatureWidget: React.FC<TemperatureProps> = ({
   // there is not need in displaying the Card component.
   try {
     parsedValue = parseFloat(value);
-  } catch (error) {
+  } catch (_) {
     return null;
   }
 
@@ -32,7 +32,7 @@ const TemperatureWidget: React.FC<TemperatureProps> = ({
         <Muted>{label}</Muted>
 
         {time ? (
-          <div className="text-right  text-sm font-bold uppercase text-gray-600">
+          <div className="text-right text-sm font-bold uppercase text-gray-600">
             {time}
           </div>
         ) : null}

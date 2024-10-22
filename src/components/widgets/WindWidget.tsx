@@ -21,7 +21,7 @@ const WindWidget: React.FC<WindWidgetProps> = ({
 
   try {
     parsedMilesPerHour = parseFloat(milesPerHour);
-  } catch (error) {
+  } catch (_) {
     return null;
   }
 

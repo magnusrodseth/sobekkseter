@@ -15,13 +15,13 @@ const SimpleWindWidget: React.FC<SimpleWindWidgetProps> = ({
   milesPerHour,
   time,
 }: SimpleWindWidgetProps) => {
-  if(!milesPerHour) return null;
+  if (!milesPerHour) return null;
 
   let parsedMilesPerHour: number;
 
   try {
     parsedMilesPerHour = parseFloat(milesPerHour);
-  } catch (error) {
+  } catch (_) {
     return null;
   }
 
@@ -33,7 +33,7 @@ const SimpleWindWidget: React.FC<SimpleWindWidgetProps> = ({
         <Muted>{label}</Muted>
 
         {time ? (
-          <div className="mb-1 text-right  text-sm font-bold uppercase text-gray-600">
+          <div className="mb-1 text-right text-sm font-bold uppercase text-gray-600">
             {time}
           </div>
         ) : null}
