@@ -1,6 +1,10 @@
 import Link from "next/link";
 
 const Footer = () => {
+  const emailSubjectLine = encodeURIComponent(
+    "Tilbakemelding til Været på Søbekkseter",
+  );
+
   return (
     <footer className="mb-8 flex flex-col items-center justify-center space-y-4 p-4">
       <Link
@@ -12,7 +16,7 @@ const Footer = () => {
       </Link>
 
       <Link
-        href="https://github.com/magnusrodseth"
+        href={`mailto:magnus.rodseth@gmail.com?subject=${emailSubjectLine}`}
         target="_blank"
         rel="noopener noreferrer"
       >
