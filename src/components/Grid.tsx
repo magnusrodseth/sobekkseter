@@ -23,6 +23,9 @@ import translateLastUpdated from "@/utils/translateLastUpdated";
 import { AspectRatio } from "./ui/aspect-ratio";
 import getRain from "@/utils/getRain";
 import toMilitaryTime from "@/utils/toMilitaryTime";
+import { cn } from "@/lib/utils";
+import { P } from "./ui/typography";
+import Image from "next/image";
 
 interface GridProps {
   conditions: Conditions;
@@ -42,27 +45,34 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
               {imageUrl ? (
                 <Dialog>
                   <DialogTrigger>
-                    <WebcameraImage
-                      src={imageUrl}
-                      alt="Web Camera Image"
-                      width={640}
-                      height={480}
-                      updated={conditions.observation_time}
-                      priority
-                      className="rounded-md"
-                    />
+                    <div className="flex h-auto flex-col p-2">
+                      <Image
+                        src={imageUrl}
+                        alt="Web Camera Image"
+                        width={640}
+                        height={480}
+                        priority
+                        className="rounded-md"
+                      />
+                      <P className="text-center italic">
+                        {translateLastUpdated(conditions.observation_time)}
+                      </P>
+                    </div>
                   </DialogTrigger>
                   <DialogContent className="min-w-[80%]">
                     <AspectRatio ratio={16 / 9}>
-                      <WebcameraImage
-                        src={imageUrl}
-                        alt="Web Camera Image"
-                        updated={conditions.observation_time}
-                        priority
-                        fill
-                        sizes="50vw"
-                        className="rounded-md"
-                      />
+                      <div className="flex h-auto flex-col p-2">
+                        <Image
+                          src={imageUrl}
+                          alt="Web Camera Image"
+                          fill
+                          sizes="50vw"
+                          className="rounded-md"
+                        />
+                        <P className="text-center italic">
+                          {translateLastUpdated(conditions.observation_time)}
+                        </P>
+                      </div>
                     </AspectRatio>
                     <DialogDescription className="flex items-center justify-center">
                       {translateLastUpdated(conditions.observation_time)}
