@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
+import { PostHogProvider } from "@/components/PostHogProvider";
 
 export const metadata: Metadata = {
   title: "Været på Søbekkseter",
@@ -32,13 +33,15 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="no">
       <body>
-        <Navbar />
+        <PostHogProvider>
+          <Navbar />
 
-        <main>{children}</main>
+          <main>{children}</main>
 
-        <Footer />
+          <Footer />
 
-        <Analytics />
+          <Analytics />
+        </PostHogProvider>
       </body>
     </html>
   );
