@@ -7,6 +7,7 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -47,7 +48,7 @@ export function WebcamDisplay({
 
   if (hasError) {
     return (
-      <div className="bg-muted text-muted-foreground flex h-[480px] w-[640px] items-center justify-center rounded-md">
+      <div className="bg-muted text-muted-foreground flex aspect-[4/3] w-full max-w-[640px] items-center justify-center rounded-md">
         <span className="text-sm">Kunne ikke laste bildet</span>
       </div>
     );
@@ -56,18 +57,16 @@ export function WebcamDisplay({
   return (
     <Dialog onOpenChange={(open) => open && refreshImage()}>
       <DialogTrigger>
-        <div className="flex h-auto flex-col p-2">
-          <div className="relative h-[480px] w-[640px]">
+        <div className="flex h-auto w-full flex-col p-2">
+          <div className="relative aspect-[4/3] w-full max-w-[640px]">
             {isLoading && <Skeleton className="absolute inset-0 rounded-md" />}
             <img
               src={cacheBustedUrl}
               alt="Web Camera Image"
-              width={640}
-              height={480}
               onLoad={handleLoad}
               onError={handleError}
               className={cn(
-                "cursor-pointer rounded-md transition-opacity duration-300",
+                "h-full w-full cursor-pointer rounded-md object-cover transition-opacity duration-300",
                 isLoading ? "opacity-0" : "opacity-100",
               )}
             />
@@ -77,8 +76,9 @@ export function WebcamDisplay({
           </P>
         </div>
       </DialogTrigger>
-      <DialogContent className="min-w-[80%]">
-        <AspectRatio ratio={16 / 9}>
+      <DialogContent className="max-w-[90vw] sm:max-w-[80%]">
+        <DialogTitle className="sr-only">Webkamera</DialogTitle>
+        <AspectRatio ratio={4 / 3}>
           <img
             src={cacheBustedUrl}
             alt="Web Camera Image"
