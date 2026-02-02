@@ -1,7 +1,6 @@
 import React from "react";
 import { CELSIUS, INCHES, MILLIBAR, PERCENT } from "../constants";
 import WidgetGroup from "./WidgetGroup";
-import WebcameraImage from "./widgets/Image";
 import MonthlyStats from "./stats/MonthlyStats";
 import YearlyStats from "./stats/YearlyStats";
 import RainWidget from "./widgets/RainWidget";
@@ -13,19 +12,9 @@ import type Conditions from "@/types/conditions";
 import type { DavisCurrentObservation } from "@/types/conditions";
 import ImageSkeleton from "./ImageSkeleton";
 import CardSkeleton from "./CardSkeleton";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTrigger,
-} from "./ui/dialog";
-import translateLastUpdated from "@/utils/translateLastUpdated";
-import { AspectRatio } from "./ui/aspect-ratio";
+import { WebcamDisplay } from "./widgets/WebcamDisplay";
 import getRain from "@/utils/getRain";
 import toMilitaryTime from "@/utils/toMilitaryTime";
-import { cn } from "@/lib/utils";
-import { P } from "./ui/typography";
-import Image from "next/image";
 
 interface GridProps {
   conditions: Conditions;
@@ -40,51 +29,15 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
     <ul className="m-4 grid auto-rows-max gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       <li className="flex flex-col gap-2 sm:col-span-1 sm:col-start-1 sm:row-start-1 md:col-span-2 md:col-start-1 md:row-start-1 lg:col-span-2 lg:col-start-2 lg:row-start-1">
         <WidgetGroup label="Været nå">
-          {conditions.observation_time ? (
+          {conditions.observation_time && imageUrl ? (
             <div className="flex items-start justify-center">
-              {imageUrl ? (
-                <Dialog>
-                  <DialogTrigger>
-                    <div className="flex h-auto flex-col p-2">
-                      <Image
-                        src={imageUrl}
-                        alt="Web Camera Image"
-                        width={640}
-                        height={480}
-                        priority
-                        className="rounded-md"
-                      />
-                      <P className="text-center italic">
-                        {translateLastUpdated(conditions.observation_time)}
-                      </P>
-                    </div>
-                  </DialogTrigger>
-                  <DialogContent className="min-w-[80%]">
-                    <AspectRatio ratio={16 / 9}>
-                      <div className="flex h-auto flex-col p-2">
-                        <Image
-                          src={imageUrl}
-                          alt="Web Camera Image"
-                          fill
-                          sizes="50vw"
-                          className="rounded-md"
-                        />
-                        <P className="text-center italic">
-                          {translateLastUpdated(conditions.observation_time)}
-                        </P>
-                      </div>
-                    </AspectRatio>
-                    <DialogDescription className="flex items-center justify-center">
-                      {translateLastUpdated(conditions.observation_time)}
-                    </DialogDescription>
-                  </DialogContent>
-                </Dialog>
-              ) : (
-                <ImageSkeleton />
-              )}
+              <WebcamDisplay
+                imageUrl={imageUrl}
+                observationTime={conditions.observation_time}
+              />
             </div>
           ) : (
-            <CardSkeleton />
+            <ImageSkeleton />
           )}
         </WidgetGroup>
       </li>
