@@ -19,9 +19,10 @@ const RainWidget: React.FC<RainWidgetProps> = ({
   time,
   tendency,
 }: RainWidgetProps) => {
-  // This is a suboptimal way of determining if the widget is a rainfall widget, or
-  // something else related to rain (ex: humidity).
-  const isRainfall = unit == INCHES;
+  // RainWidget is a general-purpose numeric display widget. Despite its name, it is
+  // also reused for humidity, pressure, and other scalar readings. The isRainfall
+  // check triggers inch-to-mm conversion only when the unit is INCHES.
+  const isRainfall = unit === INCHES;
 
   // This value is used to determine whether we have rainfall or not.
   let parsedValue: number;

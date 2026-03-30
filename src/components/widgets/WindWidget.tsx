@@ -4,19 +4,21 @@ import calculateMphToMs from "../../utils/calculateMphToMs";
 import windSpeedToDescription from "../../utils/windSpeedToDescription";
 import ArrowIcon from "../icons/ArrowIcon";
 import Wrapper from "../Wrapper";
+import { Muted } from "../ui/typography";
 
 interface WindWidgetProps {
   label: string;
   degrees: string;
-  direction: string;
   milesPerHour: string;
+  gustMph?: string;
 }
 
 const WindWidget: React.FC<WindWidgetProps> = ({
   label,
   degrees,
   milesPerHour,
-}: WindWidgetProps) => {
+  gustMph,
+}) => {
   let parsedMilesPerHour: number;
 
   try {
@@ -26,16 +28,14 @@ const WindWidget: React.FC<WindWidgetProps> = ({
   }
 
   const metersPerSecond = calculateMphToMs(parsedMilesPerHour);
-
   const description = windSpeedToDescription(metersPerSecond);
-
   const parsedDegrees = parseFloat(degrees);
+
+  const gustMs = gustMph ? calculateMphToMs(parseFloat(gustMph)) : null;
 
   return (
     <Wrapper>
-      <div className="flex flex-row justify-between">
-        <div className="mb-1 text-left text-sm text-[hsl(var(--muted-foreground))]">{label}</div>
-      </div>
+      <Muted>{label}</Muted>
 
       <div className="flex flex-row items-center justify-evenly space-x-2 space-y-2 text-xl md:flex-col md:justify-center">
         <p className="mt-4">
@@ -47,6 +47,12 @@ const WindWidget: React.FC<WindWidgetProps> = ({
         <p>
           {metersPerSecond.toFixed(1)} {METERS_PER_SECOND}
         </p>
+
+        {gustMs !== null && gustMs > metersPerSecond && (
+          <p className="text-sm text-[hsl(var(--muted-foreground))]">
+            Kast: {gustMs.toFixed(1)} {METERS_PER_SECOND}
+          </p>
+        )}
 
         <p>{description}</p>
       </div>
