@@ -216,16 +216,16 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
         </div>
       </div>
 
-      {/* Row 2: Day range chart */}
+      {/* Row 2: Stats in tabs */}
+      {davis && (
+        <StatsSection conditions={conditions} />
+      )}
+
+      {/* Row 3: Day range chart */}
       {rangeData.length > 0 && (
         <WidgetGroup label="Dagsoversikt">
           <DayRangeChart data={rangeData} />
         </WidgetGroup>
-      )}
-
-      {/* Row 3: Stats in tabs */}
-      {davis && (
-        <StatsSection conditions={conditions} />
       )}
     </div>
   );

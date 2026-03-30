@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Bar,
-  BarChart,
-  XAxis,
-  YAxis,
-  ReferenceLine,
-  Cell,
-} from "recharts";
+import { Bar, BarChart, XAxis, YAxis, CartesianGrid } from "recharts";
 import {
   ChartContainer,
   ChartTooltip,
@@ -29,86 +22,133 @@ interface DayRangeChartProps {
 }
 
 const chartConfig = {
-  range: {
-    label: "Dagsintervall",
+  min: {
+    label: "Dagens laveste",
     theme: {
-      light: "hsl(203, 40%, 39%)",
-      dark: "hsl(203, 40%, 55%)",
+      light: "hsl(210, 70%, 55%)",
+      dark: "hsl(210, 70%, 65%)",
     },
   },
   current: {
     label: "Nåværende",
     theme: {
-      light: "hsl(15, 80%, 50%)",
-      dark: "hsl(15, 80%, 60%)",
+      light: "hsl(155, 50%, 35%)",
+      dark: "hsl(155, 50%, 50%)",
+    },
+  },
+  max: {
+    label: "Dagens høyeste",
+    theme: {
+      light: "hsl(0, 72%, 51%)",
+      dark: "hsl(0, 72%, 60%)",
     },
   },
 } satisfies ChartConfig;
 
-const DayRangeChart: React.FC<DayRangeChartProps> = ({ data }) => {
-  const chartData = data.map((d) => ({
-    label: d.label,
-    base: d.min,
-    range: d.max - d.min,
-    current: d.current,
-    unit: d.unit,
-    min: d.min,
-    max: d.max,
-  }));
+function computeDomain(point: RangeDataPoint): [number, number] {
+  const values = [point.min, point.current, point.max];
+  const dataMin = Math.min(...values);
+  const dataMax = Math.max(...values);
+  const range = dataMax - dataMin;
+
+  // Add padding so bars don't fill the entire axis
+  const padding = range > 0 ? range * 0.5 : Math.abs(dataMin) * 0.1 || 1;
+  let bottom = Math.floor((dataMin - padding) * 10) / 10;
+  const top = Math.ceil((dataMax + padding) * 10) / 10;
+
+  // Only clamp to 0 when the minimum is actually 0 (e.g. wind with no wind).
+  // Don't clamp for high-baseline metrics like humidity (91%) or pressure (1000mb)
+  // where anchoring to 0 would flatten all bars.
+  if (dataMin === 0) bottom = 0;
+
+  return [bottom, top];
+}
+
+function MetricChart({ point }: { point: RangeDataPoint }) {
+  const chartData = [
+    {
+      label: point.label,
+      min: parseFloat(point.min.toFixed(1)),
+      current: parseFloat(point.current.toFixed(1)),
+      max: parseFloat(point.max.toFixed(1)),
+      unit: point.unit,
+    },
+  ];
+
+  const [domainMin, domainMax] = computeDomain(point);
 
   return (
-    <ChartContainer config={chartConfig} className="aspect-auto h-[200px] w-full">
-      <BarChart
-        data={chartData}
-        layout="vertical"
-        margin={{ top: 8, right: 48, bottom: 8, left: 0 }}
-        barCategoryGap="25%"
-      >
-        <XAxis type="number" hide />
-        <YAxis
-          type="category"
-          dataKey="label"
-          width={90}
-          axisLine={false}
-          tickLine={false}
-          tick={{ fontSize: 12 }}
-        />
-        <ChartTooltip
-          content={
-            <ChartTooltipContent
-              formatter={(_value, _name, item) => {
-                const d = item.payload;
-                return (
-                  <div className="flex flex-col gap-0.5 text-xs">
-                    <span>Min: {d.min.toFixed(1)} {d.unit}</span>
-                    <span>Nå: {d.current.toFixed(1)} {d.unit}</span>
-                    <span>Maks: {d.max.toFixed(1)} {d.unit}</span>
-                  </div>
-                );
-              }}
-            />
-          }
-        />
-        {/* Invisible base bar to offset the visible range */}
-        <Bar dataKey="base" stackId="range" fill="transparent" radius={0} />
-        {/* Visible range bar */}
-        <Bar dataKey="range" stackId="range" radius={4}>
-          {chartData.map((_entry, idx) => (
-            <Cell key={idx} fill="var(--color-range)" fillOpacity={0.3} />
-          ))}
-        </Bar>
-        {/* Reference lines for current values */}
-        {chartData.map((d) => (
-          <ReferenceLine
-            key={d.label}
-            x={d.current}
-            stroke="var(--color-current)"
-            strokeWidth={2}
-            strokeDasharray="4 2"
+    <div>
+      <p className="mb-1 text-sm font-medium text-[hsl(var(--foreground))]">
+        {point.label}{" "}
+        <span className="text-[hsl(var(--muted-foreground))]">({point.unit})</span>
+      </p>
+      <ChartContainer config={chartConfig} className="aspect-auto h-[180px] w-full">
+        <BarChart
+          data={chartData}
+          margin={{ top: 8, right: 8, bottom: 0, left: -8 }}
+          barGap={4}
+        >
+          <CartesianGrid vertical={false} strokeDasharray="3 3" />
+          <XAxis dataKey="label" hide />
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            tick={{ fontSize: 13 }}
+            width={55}
+            domain={[domainMin, domainMax]}
+            allowDataOverflow
           />
+          <ChartTooltip
+            content={<ChartTooltipContent />}
+          />
+          <Bar
+            dataKey="min"
+            fill="var(--color-min)"
+            radius={[4, 4, 0, 0]}
+            barSize={32}
+          />
+          <Bar
+            dataKey="current"
+            fill="var(--color-current)"
+            radius={[4, 4, 0, 0]}
+            barSize={32}
+          />
+          <Bar
+            dataKey="max"
+            fill="var(--color-max)"
+            radius={[4, 4, 0, 0]}
+            barSize={32}
+          />
+        </BarChart>
+      </ChartContainer>
+    </div>
+  );
+}
+
+const legendItems = [
+  { key: "min", label: "Dagens laveste", className: "bg-[hsl(210,70%,55%)] dark:bg-[hsl(210,70%,65%)]" },
+  { key: "current", label: "Nåværende", className: "bg-[hsl(155,50%,35%)] dark:bg-[hsl(155,50%,50%)]" },
+  { key: "max", label: "Dagens høyeste", className: "bg-[hsl(0,72%,51%)] dark:bg-[hsl(0,72%,60%)]" },
+] as const;
+
+const DayRangeChart: React.FC<DayRangeChartProps> = ({ data }) => {
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {data.map((point) => (
+          <MetricChart key={point.key} point={point} />
         ))}
-      </BarChart>
-    </ChartContainer>
+      </div>
+      <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-[hsl(var(--muted-foreground))]">
+        {legendItems.map((item) => (
+          <div key={item.key} className="flex items-center gap-1.5">
+            <div className={`h-2.5 w-2.5 shrink-0 rounded-sm ${item.className}`} />
+            <span>{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

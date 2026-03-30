@@ -18,28 +18,38 @@ const StatsSection: React.FC<StatsSectionProps> = ({ conditions }) => {
         <CardTitle>Statistikk</CardTitle>
       </CardHeader>
       <div className="px-4 pb-4">
-        <Tabs defaultValue="daily">
-          <TabsList className="w-full">
-            <TabsTrigger value="daily" className="flex-1">
-              Daglig
-            </TabsTrigger>
-            <TabsTrigger value="monthly" className="flex-1">
-              Månedlig
-            </TabsTrigger>
-            <TabsTrigger value="yearly" className="flex-1">
-              Årlig
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="daily">
-            <DailyStats conditions={conditions} />
-          </TabsContent>
-          <TabsContent value="monthly">
-            <MonthlyStats conditions={conditions} />
-          </TabsContent>
-          <TabsContent value="yearly">
-            <YearlyStats conditions={conditions} />
-          </TabsContent>
-        </Tabs>
+        {/* Mobile + medium: tabs */}
+        <div className="lg:hidden">
+          <Tabs defaultValue="daily">
+            <TabsList className="w-full">
+              <TabsTrigger value="daily" className="flex-1">
+                Daglig
+              </TabsTrigger>
+              <TabsTrigger value="monthly" className="flex-1">
+                Månedlig
+              </TabsTrigger>
+              <TabsTrigger value="yearly" className="flex-1">
+                Årlig
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="daily">
+              <DailyStats conditions={conditions} />
+            </TabsContent>
+            <TabsContent value="monthly">
+              <MonthlyStats conditions={conditions} />
+            </TabsContent>
+            <TabsContent value="yearly">
+              <YearlyStats conditions={conditions} />
+            </TabsContent>
+          </Tabs>
+        </div>
+
+        {/* Large desktop: 3 columns */}
+        <div className="hidden gap-3 lg:grid lg:grid-cols-3">
+          <DailyStats conditions={conditions} />
+          <MonthlyStats conditions={conditions} />
+          <YearlyStats conditions={conditions} />
+        </div>
       </div>
     </Card>
   );
