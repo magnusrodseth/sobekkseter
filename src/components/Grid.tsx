@@ -5,7 +5,6 @@ import RainWidget from "./widgets/RainWidget";
 import SunWidget from "./widgets/SunWidget";
 import TemperatureWidget from "./widgets/TemperatureWidget";
 import WindWidget from "./widgets/WindWidget";
-import UVWidget from "./widgets/UVWidget";
 import type Conditions from "@/types/conditions";
 import type { DavisCurrentObservation } from "@/types/conditions";
 import ImageSkeleton from "./ImageSkeleton";
@@ -149,12 +148,6 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
                 label="Solnedgang"
                 time={toMilitaryTime(davis.sunset)}
               />
-              {davis.uv_index && (
-                <UVWidget
-                  index={davis.uv_index}
-                  dayHigh={davis.uv_index_day_high}
-                />
-              )}
             </WidgetGroup>
           ) : (
             <CardSkeleton />

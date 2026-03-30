@@ -7,6 +7,7 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/components/ui/chart";
+import Wrapper from "@/components/Wrapper";
 
 interface RangeDataPoint {
   label: string;
@@ -78,7 +79,7 @@ function MetricChart({ point }: { point: RangeDataPoint }) {
   const [domainMin, domainMax] = computeDomain(point);
 
   return (
-    <div>
+    <Wrapper className="m-0">
       <p className="mb-1 text-sm font-medium text-[hsl(var(--foreground))]">
         {point.label}{" "}
         <span className="text-[hsl(var(--muted-foreground))]">({point.unit})</span>
@@ -95,9 +96,10 @@ function MetricChart({ point }: { point: RangeDataPoint }) {
             axisLine={false}
             tickLine={false}
             tick={{ fontSize: 13 }}
-            width={55}
+            width={65}
             domain={[domainMin, domainMax]}
             allowDataOverflow
+            tickFormatter={(v: number) => Number.isInteger(v) ? v.toString() : v.toFixed(1)}
           />
           <ChartTooltip
             content={<ChartTooltipContent />}
@@ -107,22 +109,25 @@ function MetricChart({ point }: { point: RangeDataPoint }) {
             fill="var(--color-min)"
             radius={[4, 4, 0, 0]}
             barSize={32}
+
           />
           <Bar
             dataKey="current"
             fill="var(--color-current)"
             radius={[4, 4, 0, 0]}
             barSize={32}
+
           />
           <Bar
             dataKey="max"
             fill="var(--color-max)"
             radius={[4, 4, 0, 0]}
             barSize={32}
+
           />
         </BarChart>
       </ChartContainer>
-    </div>
+    </Wrapper>
   );
 }
 
@@ -134,8 +139,8 @@ const legendItems = [
 
 const DayRangeChart: React.FC<DayRangeChartProps> = ({ data }) => {
   return (
-    <div className="space-y-4">
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="space-y-4 px-6">
+      <div className="grid gap-4 sm:grid-cols-2">
         {data.map((point) => (
           <MetricChart key={point.key} point={point} />
         ))}
