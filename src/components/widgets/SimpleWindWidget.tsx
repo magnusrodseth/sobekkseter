@@ -33,7 +33,7 @@ const SimpleWindWidget: React.FC<SimpleWindWidgetProps> = ({
         <Muted>{label}</Muted>
 
         {time ? (
-          <div className="mb-1 text-right text-sm font-bold uppercase text-gray-600">
+          <div className="mb-1 text-right text-sm font-bold uppercase text-[hsl(var(--muted-foreground))]">
             {time}
           </div>
         ) : null}

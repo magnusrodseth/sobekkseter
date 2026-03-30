@@ -40,7 +40,7 @@ const RainWidget: React.FC<RainWidgetProps> = ({
         <Muted>{label}</Muted>
 
         {time ? (
-          <div className="mb-1 text-right text-sm font-bold uppercase text-gray-600">
+          <div className="mb-1 text-right text-sm font-bold uppercase text-[hsl(var(--muted-foreground))]">
             {time}
           </div>
         ) : null}
@@ -50,8 +50,8 @@ const RainWidget: React.FC<RainWidgetProps> = ({
       <div
         className={
           parsedValue > 0
-            ? "text-center text-2xl text-blue-600"
-            : "text-center text-2xl"
+            ? "text-center text-2xl font-semibold text-blue-600 dark:text-blue-400"
+            : "text-center text-2xl font-semibold"
         }
       >
         {isRainfall ? rainInMillimeters.toFixed(1) : parsedValue.toFixed(1)}{" "}

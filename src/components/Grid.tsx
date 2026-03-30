@@ -15,6 +15,7 @@ import CardSkeleton from "./CardSkeleton";
 import { WebcamDisplay } from "./widgets/WebcamDisplay";
 import getRain from "@/utils/getRain";
 import toMilitaryTime from "@/utils/toMilitaryTime";
+import translatePressureTendency from "@/utils/translatePressureTendency";
 
 interface GridProps {
   conditions: Conditions;
@@ -118,9 +119,9 @@ const Grid: React.FC<GridProps> = ({ conditions, imageUrl }) => {
             label="Lufttrykk"
             value={conditions.pressure_mb}
             unit={MILLIBAR}
-            tendency={
+            tendency={translatePressureTendency(
               conditions.davis_current_observation.pressure_tendency_string
-            }
+            )}
           />
         </WidgetGroup>
       </li>

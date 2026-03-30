@@ -32,7 +32,7 @@ const TemperatureWidget: React.FC<TemperatureProps> = ({
         <Muted>{label}</Muted>
 
         {time ? (
-          <div className="text-right text-sm font-bold uppercase text-gray-600">
+          <div className="text-right text-sm font-bold uppercase text-[hsl(var(--muted-foreground))]">
             {time}
           </div>
         ) : null}
@@ -41,8 +41,8 @@ const TemperatureWidget: React.FC<TemperatureProps> = ({
       <div
         className={
           parsedValue > 0
-            ? "text-center text-2xl text-red-600"
-            : "text-center text-2xl text-blue-600"
+            ? "text-center text-2xl font-semibold text-red-600 dark:text-red-400"
+            : "text-center text-2xl font-semibold text-blue-600 dark:text-blue-400"
         }
       >
         {value} {unit}
