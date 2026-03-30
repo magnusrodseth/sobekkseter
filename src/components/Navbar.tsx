@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 
 import {
   Sheet,
@@ -13,7 +12,7 @@ import {
 } from "./ui/sheet";
 import { Button } from "./ui/button";
 import navigation from "@/lib/navigation";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, SunIcon } from "lucide-react";
 import { Large } from "./ui/typography";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -24,13 +23,7 @@ const Navbar = () => {
         className="flex items-center justify-center space-x-2 text-[hsl(var(--foreground))]"
         href="/"
       >
-        <Image
-          src="/img/logo.png"
-          alt="Søbekkseter logo"
-          width={28}
-          height={28}
-          className="rounded-md"
-        />
+        <SunIcon className="h-5 w-5 text-amber-500" />
         <Large>Været på Søbekkseter</Large>
       </Link>
 
